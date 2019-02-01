@@ -2,8 +2,89 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:LabelMakerWPF_Plain"
-             StartupUri="MainWindow.xaml">
+             StartupUri="Views/MainWindow.xaml">
     <Application.Resources>
-         
+        <SolidColorBrush x:Key="SideMenuColor" Color="#FF292728"/>
+        <SolidColorBrush x:Key="SideMenuOnMouseOverColor" Color="#FF312E30"/>
+
+        <Style x:Key="PrintButton" TargetType="Button">
+            <Setter Property="Width" Value="70"/>
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="Content" Value="Drukuj"/>
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ClearButton" BasedOn="{StaticResource PrintButton}" TargetType="Button">
+            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Width" Value="113"/>
+            <Setter Property="Content" Value="Wyczyść wszystko"/>
+        </Style>
+        
+        <Style x:Key="SideMenuBtnLarge" TargetType="ToggleButton">
+            <Setter Property="Height" Value="45"/>
+            <Setter Property="Width" Value="135"/>
+            <Setter Property="Background" Value="{StaticResource SideMenuColor}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="CenturyGothic"/>
+            <Setter Property="FontSize" Value="11.5pt"/>
+            <Setter Property="FontWeight" Value="Light"/>
+            <Setter Property="Margin" Value="5"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="IsChecked" Value="False"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ToggleButton">
+                        <Grid x:Name="Border" >
+                            <DockPanel>
+                                <Rectangle x:Name="Rct" Margin="2,2,0,2" Height="41" Width="10" Fill="RoyalBlue" Visibility="Collapsed"/>
+                                <ContentPresenter x:Name="ContentPresenter" 
+                                                  Content="{TemplateBinding Content}" 
+                                                  HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                                  VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                            </DockPanel>
+                        </Grid>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border"  Property="Background" Value="{StaticResource SideMenuOnMouseOverColor}"/>
+                            </Trigger>
+                            <Trigger Property="IsChecked" Value="True">
+                                <Setter TargetName="Rct" Property="Visibility" Value="Visible"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SideMenuBtnSmall" BasedOn="{StaticResource SideMenuBtnLarge}" TargetType="ToggleButton">
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="115"/>
+            <Setter Property="FontSize" Value="8.5pt"/>
+            <Setter Property="IsChecked" Value="False"/>
+        </Style>
+
+        
+
+        <Style x:Key="ExpandBox" TargetType="StackPanel">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=BoxBtn, Path=IsChecked}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="ExpandCnt" TargetType="StackPanel">
+            <Setter Property="Visibility" Value="Collapsed"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ElementName=CntBtn, Path=IsChecked}" Value="True">
+                    <Setter Property="Visibility" Value="Visible"/>
+                </DataTrigger>
+
+            </Style.Triggers>
+        </Style>
     </Application.Resources>
 </Application>

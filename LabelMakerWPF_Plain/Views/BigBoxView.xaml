@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="LabelMakerWPF_Plain.Views.BigBoxView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:LabelMakerWPF_Plain.Views"
+             xmlns:Controls="clr-namespace:LabelMakerWPF_Plain.Controls"
+             mc:Ignorable="d" 
+             Height="auto" Width="360" Margin="20,10,20,20" FontSize="11">
+
+    <UserControl.Resources>
+        <Style TargetType="TextBox">
+            <Setter Property="Margin" Value="0,0,10,5"/>
+            <Setter Property="Height" Value="20"/>
+            <Style.Triggers>
+                <Trigger Property="IsFocused" Value="True">
+                    <Setter Property="BorderBrush" Value="#FFABADB3"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style TargetType="TextBlock">
+            <Setter Property="Margin" Value="0,0,10,0"/>
+        </Style>
+        <Style TargetType="Button">
+            <Setter Property="Height" Value="23"/>
+            <Setter Property="Width" Value="113"/>
+        </Style>
+    </UserControl.Resources>
+
+    <StackPanel>
+        <GroupBox Header="Podstawowe informacje">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Column="1" Grid.Row="1" Text="Nazwa firmy:"/>
+                <TextBlock Grid.Column="1" Grid.Row="2" Text="Nr zamówienia:"/>
+                <TextBlock Grid.Column="1" Grid.Row="3" Text="Osoba kontaktowa:"/>
+                <TextBlock Grid.Column="1" Grid.Row="4" Text="Numer telefonu:"/>
+                <TextBlock Grid.Column="1" Grid.Row="5" Text="Ulica:"/>
+                <DockPanel Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="2">
+                    <TextBlock  Text="Kod pocztowy:"/>
+                    <TextBox Width="45" MaxLength="6" Text="{Binding ZipCode}"/>
+                    <TextBlock Text="Miejscowość:"/>
+                    <TextBox MaxLength="15" Text="{Binding City}"/>
+                </DockPanel>
+                <TextBlock Grid.Column="1" Grid.Row="7" Text="Nr paczki:"/>
+
+                <TextBox Grid.Column="2" Grid.Row="1" x:Name="CompanyTxt" MaxLength="36" Text="{Binding Company, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox Grid.Column="2" Grid.Row="2" x:Name="OrderTxt" MaxLength="30" Text="{Binding Order}" />
+                <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding ContactPerson}"/>
+                <TextBox Grid.Column="2" Grid.Row="4" MaxLength="9" Text="{Binding PhoneNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Grid.Column="2" Grid.Row="5" Text="{Binding Street}"/>
+                <DockPanel Grid.Column="2" Grid.Row="7" LastChildFill="False">
+                    <Controls:NumericUpDown x:Name="box_0" Value="{Binding Box_0, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}"/>
+                    <TextBlock VerticalAlignment="Center" Margin="5,0,5,0"  Text="z"/>
+                    <Controls:NumericUpDown x:Name="box_1" Value="{Binding Box_1, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}"/>
+                    <CheckBox x:Name="BoxCheck" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding CheckBoxIsChecked, UpdateSourceTrigger=PropertyChanged}"/>
+                </DockPanel>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Komponenty i ilości" Margin="0,10,0,0">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="10"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="10"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                    <RowDefinition Height="auto"/>
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="Item_0" Text="{Binding Item_0, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Width="180" MaxLength="22"/>
+                <TextBox x:Name="Item_1" Text="{Binding Item_1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" Width="180" MaxLength="22"/>
+                <TextBox x:Name="Item_2" Text="{Binding Item_2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" Width="180" MaxLength="22"/>
+                <TextBox x:Name="Item_3" Text="{Binding Item_3, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Width="180" MaxLength="22"/>
+                <TextBox x:Name="Item_4" Text="{Binding Item_4, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="5" Width="180" MaxLength="22"/>
+                <TextBox x:Name="Item_5" Text="{Binding Item_5, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="6" Width="180" MaxLength="22"/>
+
+                <Controls:NumericUpDown x:Name="Qnt_0" Value="{Binding Qnt_0, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1"/>
+                <Controls:NumericUpDown x:Name="Qnt_1" Value="{Binding Qnt_1, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2"/>
+                <Controls:NumericUpDown x:Name="Qnt_2" Value="{Binding Qnt_2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3"/>
+                <Controls:NumericUpDown x:Name="Qnt_3" Value="{Binding Qnt_3, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4"/>
+                <Controls:NumericUpDown x:Name="Qnt_4" Value="{Binding Qnt_4, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5"/>
+                <Controls:NumericUpDown x:Name="Qnt_5" Value="{Binding Qnt_5, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="6"/>
+
+                <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="1" Text="szt."/>
+                <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="2" Text="szt."/>
+                <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="3" Text="szt."/>
+                <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="4" Text="szt."/>
+                <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="5" Text="szt."/>
+                <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="6" Text="szt."/>
+            </Grid>
+        </GroupBox>
+
+        <GroupBox Header="Liczba sztuk do wydrukowania">
+            <DockPanel LastChildFill="False">
+                <TextBlock Margin="5" Text="Ilość etykiet:"/>
+                <Controls:NumericUpDown Margin="0,5,0,0" x:Name="Copies" Value="{Binding Copies, Mode=TwoWay}"/>
+            </DockPanel>
+        </GroupBox>
+
+        <DockPanel Margin="0,10,0,0" LastChildFill="False">
+            <Button Style="{StaticResource PrintButton}" Command="{Binding PrintCommand}" DockPanel.Dock="Left"/>
+            <Button Margin="10,0,0,0" Command="{Binding NextCommand}" Content="Utwórz kolejną" />
+            <Button DockPanel.Dock="Right" Command="{Binding ClearCommand}" Style="{StaticResource ClearButton}"/>
+        </DockPanel>
+    </StackPanel>
+</UserControl>

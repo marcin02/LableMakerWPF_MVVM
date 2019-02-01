@@ -37,6 +37,8 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +57,31 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BigBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\BoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CertificationLvlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CertificationNominateView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CustomView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,7 +89,59 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Controls\NumericUpDown.cs" />
+    <Compile Include="Converters\BoolToBoolConverter.cs" />
+    <Compile Include="Converters\StringLenghtToPixels.cs" />
+    <Compile Include="Interfaces\ICertificationDrawInfoModel.cs" />
+    <Compile Include="Interfaces\IBoxDrawInfoModel.cs" />
+    <Compile Include="Interfaces\IBoxPrintModel.cs" />
+    <Compile Include="Models\BigBoxPrintModel.cs" />
+    <Compile Include="Models\BoxPrintModel.cs" />
+    <Compile Include="Models\BoxValidationModel.cs" />
+    <Compile Include="Models\CertificationLevelPrintModel.cs" />
+    <Compile Include="Models\CertificationPrintModel.cs" />
+    <Compile Include="Models\CustomPrintModel.cs" />
+    <Compile Include="Models\Enums.cs" />
+    <Compile Include="Interfaces\IDrawInfoModel.cs" />
+    <Compile Include="Models\MessagesModel.cs" />
+    <Compile Include="Models\DrawInfoModel.cs" />
+    <Compile Include="Converters\ConvertSettings.cs" />
+    <Compile Include="Models\PaperSizeModel.cs" />
+    <Compile Include="Models\SelectedViewModel.cs" />
+    <Compile Include="PrinterSettings\PSettings.cs" />
+    <Compile Include="Print\CertificationLvlLablePrint.cs" />
+    <Compile Include="Print\CustomLablePrint.cs" />
+    <Compile Include="Print\SmallBoxLablePrint.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Tools\ObservableObject.cs" />
+    <Compile Include="Tools\RelayCommand.cs" />
+    <Compile Include="Validation\BoxValidation.cs" />
+    <Compile Include="ViewModels\BigBoxViewModel.cs" />
+    <Compile Include="ViewModels\BoxViewModel.cs" />
+    <Compile Include="ViewModels\CertificationLvlViewModel.cs" />
+    <Compile Include="ViewModels\CertificationNominateViewModel.cs" />
+    <Compile Include="ViewModels\CustomViewModel.cs" />
+    <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="Views\BigBoxView.xaml.cs">
+      <DependentUpon>BigBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BoxView.xaml.cs">
+      <DependentUpon>BoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CertificationLvlView.xaml.cs">
+      <DependentUpon>CertificationLvlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CertificationNominateView.xaml.cs">
+      <DependentUpon>CertificationNominateView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CustomView.xaml.cs">
+      <DependentUpon>CustomView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
@@ -71,11 +149,6 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -92,7 +165,35 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\icons8-services-512.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\flexlean - logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\bold-text-option.png" />
+    <Resource Include="Resources\center-alignment.png" />
+    <Resource Include="Resources\italicize-text.png" />
+    <Resource Include="Resources\left-align.png" />
+    <Resource Include="Resources\right-alignment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\right-text-alignment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\right-text-alignment 4 lines.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\right-text-alignment %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\center-alighment.png" />
+    <Resource Include="Resources\left-alignment.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
