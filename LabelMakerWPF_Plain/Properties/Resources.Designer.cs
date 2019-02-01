@@ -169,5 +169,15 @@ namespace LabelMakerWPF_Plain.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap vertical_align_center_black_24x24 {
+            get {
+                object obj = ResourceManager.GetObject("vertical_align_center_black_24x24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

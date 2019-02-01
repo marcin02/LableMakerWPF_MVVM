@@ -62,10 +62,18 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-        
+        <Style x:Key="VerticalAlignmentBorder" BasedOn="{StaticResource WeightStyleButton}" TargetType="ToggleButton">
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding VerticalContentAlignment}" Value="Center">
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="BorderBrush" Value="#FF62A2E4"/>
+                    <Setter Property="Background" Value="#FFC9E0F7"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>
+
     </UserControl.Resources>
-    
-        <StackPanel>           
+    <StackPanel>           
             <DockPanel Grid.Row="0" Grid.Column="0" LastChildFill="False">
                 <ComboBox x:Name="FontFamily" 
                           Style="{StaticResource ComboBoxItemTemplate}"
@@ -86,21 +94,26 @@
                           ItemsSource="{Binding FontSize}" 
                           IsTextSearchEnabled="False"/>
                 
-                <Button x:Name="LeftAligment" Style="{StaticResource LeftAlignmentBorder}" Command="{Binding AlignmentCommand}" CommandParameter="Left" Margin="3,0,0,0">
+                <Button x:Name="LeftAligment" Style="{StaticResource LeftAlignmentBorder}" Command="{Binding HorizontalAlignmentCommand}" CommandParameter="Left" Margin="3,0,0,0">
                     <Button.Content>
                         <Image  Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16"  Source="/LabelMakerWPF_Plain;component/Resources/left-alignment.png"/>
                     </Button.Content>
                 </Button>
-                <Button x:Name="CenterAligment" Style="{StaticResource CenterAlignmentBorder}" Command="{Binding AlignmentCommand}" CommandParameter="Center" Margin="3,0,0,0">
+                <Button x:Name="CenterAligment" Style="{StaticResource CenterAlignmentBorder}" Command="{Binding HorizontalAlignmentCommand}" CommandParameter="Center" Margin="3,0,0,0">
                     <Button.Content>
                         <Image  Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16" Source="/LabelMakerWPF_Plain;component/Resources/center-alighment.png"/>
                 </Button.Content>
                 </Button>
-                <Button x:Name="RightAligment" Style="{StaticResource RightAlignmentBorder}" Command="{Binding AlignmentCommand}" CommandParameter="Right" Margin="3,0,2,0">
+                <Button x:Name="RightAligment" Style="{StaticResource RightAlignmentBorder}" Command="{Binding HorizontalAlignmentCommand}" CommandParameter="Right" Margin="3,0,2,0">
                     <Button.Content>
                         <Image Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16"  Source="/LabelMakerWPF_Plain;component/Resources/right-text-alignment (1).png" />
                     </Button.Content>
                 </Button>
+                <ToggleButton Style="{StaticResource VerticalAlignmentBorder}" Command="{Binding VerticalAlignmentCommand}">
+                    <ToggleButton.Content>
+                        <Image Width="16" Height="16" Source="/LabelMakerWPF_Plain;component/Resources/vertical_align_center_black_24x24.png"/>
+                    </ToggleButton.Content>
+                </ToggleButton>
                 <Border Width="1" Margin="2" Background="#8888"/>
 
                 <ToggleButton x:Name="BoldFontStyle" Command="{Binding FontWeightCommand}" Margin="3,0,0,0" Style="{StaticResource WeightStyleButton}">
@@ -116,10 +129,10 @@
                 <ComboBox x:Name="PaperSize" 
                           DockPanel.Dock="Right" 
                           ToolTip="Rozmiar papieru" 
-                          Margin="10,0,0,0" 
+                          Margin="5,0,0,0" 
                           VerticalAlignment="Center" 
                           SelectedIndex="0" 
-                          Width="80" 
+                          Width="70" 
                           SelectedItem="{Binding SelectedPaperSize}" 
                           ItemsSource="{Binding PaperSize.Keys}"/>
                 
@@ -140,6 +153,7 @@
                      AcceptsTab="True" 
                      Width="{Binding WidthTextBox, Mode=TwoWay}" 
                      Height="{Binding HeightTextBox, Mode=TwoWay}"
+                     VerticalContentAlignment="{Binding VerticalContentAlignment}"
                      HorizontalContentAlignment="{Binding HorizontalContentAlignment}"/>
 
              <GroupBox Header="Liczba sztuk do wydrukowania">
@@ -150,7 +164,7 @@
              </GroupBox>
 
             <DockPanel LastChildFill="False" Grid.Row="2" Grid.Column="0" Margin="0,10,0,0">
-                <Button x:Name="Print" DockPanel.Dock="Left" Command="{Binding PrintCommand}" CommandParameter="{Binding ElementName=Editor}" Style="{StaticResource PrintButton}"/>
+                <Button x:Name="Print" DockPanel.Dock="Left" Command="{Binding PrintCommand}" Style="{StaticResource PrintButton}"/>
                 <Button x:Name="Clear" DockPanel.Dock="Right" Command="{Binding ClearCommand}" Style="{StaticResource ClearButton}"/>
             </DockPanel>
     </StackPanel>    

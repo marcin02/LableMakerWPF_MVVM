@@ -20,7 +20,8 @@ namespace LabelMakerWPF_Plain.Models
         public string fontWeight { get; set; }
         public int paperHeight { get; set; }
         public int paperWidth { get; set; }
-        public string alignment { get; set; }
+        public string horizontalAlignment { get; set; }
+        public string verticalAlignment { get; set; }
 
         public void SetFont()
         {

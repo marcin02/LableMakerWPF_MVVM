@@ -9,14 +9,12 @@ namespace LabelMakerWPF_Plain.PrinterSettings
     {
         public PSettings()
         {
-            printDocument = new PrintDocument();
-            printDialog = new PrintDialog();
             LoadSettings();
             PrintDialog();
         }
 
-        PrintDocument printDocument;
-        PrintDialog printDialog;
+        PrintDocument printDocument = new PrintDocument();
+        PrintDialog printDialog = new PrintDialog();
 
         private void LoadSettings()
         {

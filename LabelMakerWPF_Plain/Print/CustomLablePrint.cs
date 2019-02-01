@@ -43,23 +43,25 @@ namespace LabelMakerWPF_Plain.Print
             Graphics graphics = e.Graphics;          
             StringReader sr = new StringReader(model.text);
             string line;
-            float Y = 6;
-            float X = 6;
+            float Y = 5;
+            float interline = 0;
+            float X = 5;
 
             while ((line = sr.ReadLine()) != null) //Breakes multiline string into lines
             {
-                if (model.alignment == "Center") X = SetPositionCenter(graphics, line);
-                else if (model.alignment == "Right") X = SetPositionRight(graphics, line)-X;
+                if (model.verticalAlignment == "Center") Y = SetPositionVerticalCenter(graphics, line) + interline;
+                if (model.horizontalAlignment == "Center") X = SetPositionCenter(graphics, line);
+                else if (model.horizontalAlignment == "Right") X = SetPositionRight(graphics, line) - X;
 
                 graphics.DrawString(line, model.body, Brushes.Black, X, Y);
-                Y += model.body.GetHeight();
+                interline += model.body.GetHeight();
             }
         }
 
         private float SetPositionCenter(Graphics gr, string line)
         {
-            PointF posF = gr.MeasureString(line, model.body).ToPointF(); // Gets printed width of a string
-            float pos = (gr.VisibleClipBounds.Width - posF.X) / 2; //Calculate center string position on page
+            PointF posF = gr.MeasureString(line, model.body).ToPointF();              // Gets printed width of a string
+            float pos = (gr.VisibleClipBounds.Width - posF.X) / 2;                    //Calculate X for center string position on page
 
             return pos;
         }
@@ -72,6 +74,13 @@ namespace LabelMakerWPF_Plain.Print
             return pos;
         }
 
+        private float SetPositionVerticalCenter(Graphics gr, string line)
+        {
+            PointF posF = gr.MeasureString(line, model.body).ToPointF();
+            float pos = (gr.VisibleClipBounds.Height - posF.Y)/2;                     //Calculate Y for center string position on page
+
+            return pos;
+        }
         #endregion
     }
 }

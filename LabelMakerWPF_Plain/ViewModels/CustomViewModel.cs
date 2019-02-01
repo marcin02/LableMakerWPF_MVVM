@@ -26,7 +26,8 @@ namespace LabelMakerWPF_Plain.ViewModels
         public CustomViewModel()
         {
             ClearCommand = new RelayCommand(ClearTextBox);
-            AlignmentCommand = new RelayCommand(SetContentAlignment);
+            HorizontalAlignmentCommand = new RelayCommand(SetHorizontalContentAlignment);
+            VerticalAlignmentCommand = new RelayCommand(SetVerticalContentAlignment);
             FontWeightCommand = new RelayCommand(SetFontWeight);
             FontStyleCommand = new RelayCommand(SetFontStyle);
             PrintCommand = new RelayCommand(Print);
@@ -50,6 +51,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         private string _selectedFontWeight;
         private string _selectedPaperSize;
         private string _text;
+        private string _verticalContentAlignment = "Top";
         private int _widthTextBox;
 
         #endregion
@@ -107,6 +109,11 @@ namespace LabelMakerWPF_Plain.ViewModels
             get { return _text; }
             set { _text = CheckIfFit(value); OnPropertyChanged(nameof(Text)); }
         }
+        public string VerticalContentAlignment
+        { 
+            get { return _verticalContentAlignment; }
+            set { _verticalContentAlignment = value; OnPropertyChanged(nameof(VerticalContentAlignment)); }
+        }
         public int WidthTextBox
         {
             get { return _widthTextBox; }
@@ -127,7 +134,8 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         public RelayCommand PrintCommand { get; private set; }
         public RelayCommand ClearCommand { get; private set; }
-        public RelayCommand AlignmentCommand { get; private set; }        
+        public RelayCommand HorizontalAlignmentCommand { get; private set; }        
+        public RelayCommand VerticalAlignmentCommand { get; private set; }
         public RelayCommand FontWeightCommand { get; private set; }
         public RelayCommand FontStyleCommand { get; private set; }
 
@@ -135,10 +143,10 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         #region Methods
 
-        private void AddToPrint(object obj)
+        private void AddToPrint()
         {
             StringLenghtToPixels convert = new StringLenghtToPixels();
-            CustomPrintModel model = new CustomPrintModel()
+            CustomPrintModel model = new CustomPrintModel
             {
                 text = this._text,
                 copies = this._copies,
@@ -148,7 +156,8 @@ namespace LabelMakerWPF_Plain.ViewModels
                 fontWeight = this._selectedFontWeight,
                 paperHeight = this.PaperSize[_selectedPaperSize].Height,
                 paperWidth = this.PaperSize[_selectedPaperSize].Width,
-                alignment = this._horizontalContentAlignment
+                horizontalAlignment = this._horizontalContentAlignment,
+                verticalAlignment = this._verticalContentAlignment
             };
             model.SetFont();
             CustomLablePrint print = new CustomLablePrint(model);
@@ -192,7 +201,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             PaperSize = new Dictionary<string, PaperSizeModel>();
 
             PaperSize.Add("100x50", new PaperSizeModel { Width = 377, Height = 189 });
-            PaperSize.Add("100x100", new PaperSizeModel { Width = 400, Height = 400 });
+            PaperSize.Add("100x100", new PaperSizeModel { Width = 377, Height = 377 });
         }
 
         private void Print(object obj)
@@ -200,7 +209,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             Validation();
             if (!_error)
             {                          
-                AddToPrint(obj);
+                AddToPrint();
             }
         }
 
@@ -246,9 +255,21 @@ namespace LabelMakerWPF_Plain.ViewModels
             }
         }
 
-        private void SetContentAlignment(object alignment)
+        private void SetHorizontalContentAlignment(object alignment)
         {
             HorizontalContentAlignment = (string)alignment;
+        }
+
+        private void SetVerticalContentAlignment(object obj)
+        {
+            if(_verticalContentAlignment == "Top")
+            {
+                VerticalContentAlignment = "Center";
+            }
+            else
+            {
+                VerticalContentAlignment = "Top";
+            }
         }
 
         private void SetFontWeight(object weight)
@@ -259,7 +280,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             }
             else
             {
-            SelectedFontWeight = "Bold";
+                SelectedFontWeight = "Bold";
             }
         }
 
@@ -271,7 +292,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             }
             else
             {
-            SelectedFontStyle = "Italic";
+                SelectedFontStyle = "Italic";
             }
         }
 
