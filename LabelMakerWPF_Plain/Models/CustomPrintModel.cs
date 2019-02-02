@@ -10,29 +10,28 @@ namespace LabelMakerWPF_Plain.Models
 {
     public class CustomPrintModel
     {
-        //Need rework
-        public string text { get; set; }
-        public short copies { get; set; }
-        public Font body { get; private set; }
-        public string fontType { get; set; }
-        public double fontSize { get; set; }
-        public string fontStyle { get; set; }
-        public string fontWeight { get; set; }
-        public int paperHeight { get; set; }
-        public int paperWidth { get; set; }
-        public string horizontalAlignment { get; set; }
-        public string verticalAlignment { get; set; }
-
-        public void SetFont()
+        public string Text { get; set; }
+        public short Copies { get; set; }
+        public Font Body { get { return SetFont(); } }
+        public string FontType { get; set; }
+        public double FontSize { get; set; }
+        public string FontStyle { get; set; }
+        public string FontWeight { get; set; }
+        public int PaperHeight { get; set; }
+        public int PaperWidth { get; set; }
+        public string HorizontalAlignment { get; set; }
+        public string VerticalAlignment { get; set; }
+        
+        public Font SetFont()
         {
-            FontStyle style = FontStyle.Regular;
-            FontStyle weight = FontStyle.Regular;
+            FontStyle style = System.Drawing.FontStyle.Regular;
+            FontStyle weight = System.Drawing.FontStyle.Regular;
             Font font;
-            if (fontStyle == "Italic") style = FontStyle.Italic;
-            if (fontWeight == "Bold")weight = FontStyle.Bold;
-            FontFamily fontFamily = new FontFamily(fontType);
-            font = new Font(fontFamily, (float)fontSize, style | weight, GraphicsUnit.Pixel);
-            body = font;                   
+            if (FontStyle == "Italic") style = System.Drawing.FontStyle.Italic;
+            if (FontWeight == "Bold") weight = System.Drawing.FontStyle.Bold;
+            FontFamily fontFamily = new FontFamily(FontType);
+            font = new Font(fontFamily, (float)FontSize, style | weight, GraphicsUnit.Pixel);
+            return font;                   
         }
     }
 }

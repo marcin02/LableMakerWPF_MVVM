@@ -101,12 +101,12 @@
     <Compile Include="Models\CertificationLevelPrintModel.cs" />
     <Compile Include="Models\CertificationPrintModel.cs" />
     <Compile Include="Models\CustomPrintModel.cs" />
-    <Compile Include="Models\Enums.cs" />
     <Compile Include="Interfaces\IDrawInfoModel.cs" />
     <Compile Include="Models\MessagesModel.cs" />
     <Compile Include="Models\DrawInfoModel.cs" />
     <Compile Include="Converters\ConvertSettings.cs" />
     <Compile Include="Models\PaperSizeModel.cs" />
+    <Compile Include="Models\PrinterSettingsModel.cs" />
     <Compile Include="Models\SelectedViewModel.cs" />
     <Compile Include="PrinterSettings\PSettings.cs" />
     <Compile Include="Print\CertificationLvlLablePrint.cs" />

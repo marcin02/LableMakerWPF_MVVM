@@ -148,18 +148,17 @@ namespace LabelMakerWPF_Plain.ViewModels
             StringLenghtToPixels convert = new StringLenghtToPixels();
             CustomPrintModel model = new CustomPrintModel
             {
-                text = this._text,
-                copies = this._copies,
-                fontType = this._selectedFont,
-                fontSize = this._selectedFontSize,
-                fontStyle = this._selectedFontStyle,
-                fontWeight = this._selectedFontWeight,
-                paperHeight = this.PaperSize[_selectedPaperSize].Height,
-                paperWidth = this.PaperSize[_selectedPaperSize].Width,
-                horizontalAlignment = this._horizontalContentAlignment,
-                verticalAlignment = this._verticalContentAlignment
+                Text = this._text,
+                Copies = this._copies,
+                FontType = this._selectedFont,
+                FontSize = this._selectedFontSize,
+                FontStyle = this._selectedFontStyle,
+                FontWeight = this._selectedFontWeight,
+                PaperHeight = this.PaperSize[_selectedPaperSize].Height,
+                PaperWidth = this.PaperSize[_selectedPaperSize].Width,
+                HorizontalAlignment = this._horizontalContentAlignment,
+                VerticalAlignment = this._verticalContentAlignment
             };
-            model.SetFont();
             CustomLablePrint print = new CustomLablePrint(model);
         }
 

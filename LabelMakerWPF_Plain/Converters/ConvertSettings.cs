@@ -9,10 +9,9 @@ namespace LabelMakerWPF_Plain.Converters
 {
     public class ConvertSettings
     {
-        private string _convertString = Settings.Default.printerSettings;
-
-        public string SettingToString(System.Drawing.Printing.PrinterSettings settings)
+        public string SettingToString(object settings)
         {
+            var input = settings.GetType().GetProperties();
             if (settings == null)
                 return null;
 
@@ -24,14 +23,15 @@ namespace LabelMakerWPF_Plain.Converters
             }
         }
 
-        public System.Drawing.Printing.PrinterSettings SettingFromString()
-        {
+        public object SettingFromString(string settings)
+        {           
             try
             {
                 BinaryFormatter bf = new BinaryFormatter();
-                using (var ms = new MemoryStream(Convert.FromBase64String(_convertString)))
+                using (var ms = new MemoryStream(Convert.FromBase64String(settings)))
                 {
-                    return (System.Drawing.Printing.PrinterSettings)bf.Deserialize(ms);
+                    var output = bf.Deserialize(ms);
+                    return output;
                 }
             }
             catch (Exception)

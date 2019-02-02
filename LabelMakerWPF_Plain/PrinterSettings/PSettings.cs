@@ -1,4 +1,5 @@
 ﻿using LabelMakerWPF_Plain.Converters;
+using LabelMakerWPF_Plain.Models;
 using LabelMakerWPF_Plain.Properties;
 using System.Drawing.Printing;
 using System.Windows.Forms;
@@ -18,7 +19,8 @@ namespace LabelMakerWPF_Plain.PrinterSettings
 
         private void LoadSettings()
         {
-            printDocument.PrinterSettings = SettingFromString();
+            PrinterSettingsModel settings  = new PrinterSettingsModel();
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.printerSettings);
         }
 
         private void PrintDialog()
@@ -29,6 +31,7 @@ namespace LabelMakerWPF_Plain.PrinterSettings
             {
                 printDocument.PrinterSettings = printDialog.PrinterSettings;
                 Settings.Default.printerSettings = SettingToString(printDocument.PrinterSettings);
+                Settings.Default.Save();
             }
         }
     }

@@ -17,51 +17,43 @@ namespace LabelMakerWPF_Plain.Print
 
         public CertificationLvlLablePrint(CertificationLevelPrintModel model)
         {
-            FillProperties(model);
+            this.model = model;
             InitialSettingsAndPrint();
         }
 
         #endregion
 
-        private short _copies { get; set; }
-        private int _lvlWeight { get; set; }
-        private Font body { get; set; }
-        private Font header { get; set; }
-        private Pen p { get; set; }
+        #region Object (model)
+
+        CertificationLevelPrintModel model;
+        DrawInfoModel drawModel = new DrawInfoModel();
+
+        #endregion
 
         #region Methods
-
-        private void FillProperties(CertificationLevelPrintModel model)
-        {
-            _copies = model.Copies;
-            _lvlWeight = model.LvlWeight;
-            DrawInfoModel drawModel = new DrawInfoModel();
-            this.body = drawModel.body;
-            this.header = drawModel.header;
-            this.p = drawModel.p;
-        }
 
         private void InitialSettingsAndPrint()
         {
             PrintDocument printDocument = new PrintDocument();
-            printDocument.PrinterSettings = SettingFromString();
+            PrinterSettingsModel settings = new PrinterSettingsModel();
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.printerSettings);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", 394, 197);
-            printDocument.PrinterSettings.Copies = _copies;
+            printDocument.PrinterSettings.Copies = model.Copies;
             printDocument.Print();
         }
 
         private void printDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
             Graphics graphics = e.Graphics;
-            float headerHeight = header.GetHeight();
-            float bodyHeight = body.GetHeight();
+            float headerHeight = drawModel.header.GetHeight();
+            float bodyHeight = drawModel.body.GetHeight();
             float x = 20;
             float y = 80;
 
-            graphics.DrawString("flexlean sp. z o.o.", header, Brushes.Black, x, y);
+            graphics.DrawString("flexlean sp. z o.o.", drawModel.header, Brushes.Black, x, y);
             y += headerHeight;
-            graphics.DrawString($"Nośność poziomu: { _lvlWeight } kg", body, Brushes.Black, x, y + 2);
+            graphics.DrawString($"Nośność poziomu: { model.LvlWeight } kg", drawModel.body, Brushes.Black, x, y + 2);
         }
 
         #endregion
