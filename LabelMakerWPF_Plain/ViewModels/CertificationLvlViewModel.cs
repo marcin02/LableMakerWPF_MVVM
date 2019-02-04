@@ -96,9 +96,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             {
                 MessagesModel messages = new MessagesModel();
                 messages.BoxError();
-            }
-           
-
+            }         
         }
 
         #endregion
@@ -123,8 +121,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                     string resultNOK = "Błąd";                    
 
                     if (_lvlWeight == 0)
-                    {
-                        
+                    {                        
                         return resultNOK;
                     }
                     else

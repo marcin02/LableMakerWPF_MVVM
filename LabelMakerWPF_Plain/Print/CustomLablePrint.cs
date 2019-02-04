@@ -1,5 +1,6 @@
 ﻿using LabelMakerWPF_Plain.Converters;
 using LabelMakerWPF_Plain.Models;
+using LabelMakerWPF_Plain.Properties;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
@@ -13,6 +14,8 @@ namespace LabelMakerWPF_Plain.Print
 
         public CustomLablePrint(CustomPrintModel model)
         {
+            settings = new PrinterSettingsModel();
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(settings.PaperSize);
             this.model = model;           
             InitialSettingsAndPrint();
         }
@@ -22,17 +25,18 @@ namespace LabelMakerWPF_Plain.Print
         #region Object
 
         private CustomPrintModel model;
-        
+        private Dictionary<string, PaperSizeModel> PaperSize;
+        private PrinterSettingsModel settings;
+
         #endregion
 
         #region Methods
 
         private void InitialSettingsAndPrint()
         {
-            PrintDocument printDocument = new PrintDocument();
-            PrinterSettingsModel settings = new PrinterSettingsModel();
-            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.printerSettings);
-            printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", 394, 197);
+            PrintDocument printDocument = new PrintDocument();            
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
+            printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["100x50"].PrintWidth, PaperSize["100x50"].PrintHeight);
            // printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7); 
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.PrinterSettings.Copies = model.Copies;

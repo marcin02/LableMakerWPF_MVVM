@@ -35,7 +35,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         public string PhoneNumber
         {
             get { return _phoneNumber; }
-            set { _phoneNumber = PhoneNumberKeyCheck(value); OnPropertyChanged(nameof(PhoneNumber)); }
+            set { _phoneNumber = NumbersOnly(value); OnPropertyChanged(nameof(PhoneNumber)); }
         }
         public string Street
         {
@@ -45,14 +45,14 @@ namespace LabelMakerWPF_Plain.ViewModels
         public string ZipCode
         {
             get { return _zipCode; }
-            set { _zipCode = value; OnPropertyChanged(nameof(ZipCode)); }
+            set { _zipCode = CheckCode(value); OnPropertyChanged(nameof(ZipCode)); }
         }
 
         #endregion
 
         #region Methods
 
-        private string PhoneNumberKeyCheck(string value)
+        private string NumbersOnly(string value)
         {
             Regex regex = new Regex("[^0-9]");
 
@@ -62,6 +62,18 @@ namespace LabelMakerWPF_Plain.ViewModels
             }
 
             return _phoneNumber; 
+        }
+
+        private string CheckCode(string value)
+        {
+            Regex regex = new Regex("[^0-9]");
+
+            if (!regex.IsMatch(value))
+            {
+                return value;
+            }
+
+            return _zipCode;
         }
 
 

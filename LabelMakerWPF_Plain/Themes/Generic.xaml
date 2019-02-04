@@ -17,6 +17,7 @@
     </Style>
 
     <Style TargetType="{x:Type local:NumericUpDown}">
+        <Setter Property="IsTabStop" Value="False"/>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="{x:Type local:NumericUpDown}">
@@ -29,9 +30,9 @@
                             <RowDefinition Height="10"/>
                             <RowDefinition Height="10"/>
                         </Grid.RowDefinitions>
-                        <TextBox x:Name="PART_TextBoxNum" Text="0"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="0" Height="20" Width="40" />
-                        <RepeatButton x:Name="PART_UpButton" Grid.Column="1" Grid.Row="0" Style="{StaticResource NumericButtonUp}"/>
-                        <RepeatButton x:Name="PART_DownButton" Grid.Column="1" Grid.Row="1" Style="{StaticResource NumericButtonDown}"/>
+                        <TextBox x:Name="PART_TextBoxNum" Text="0"  Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="0" Height="20" Width="40" TabIndex="{TemplateBinding TabIndex}" />
+                        <RepeatButton x:Name="PART_UpButton" Grid.Column="1" Grid.Row="0" Style="{StaticResource NumericButtonUp}" Focusable="False" IsTabStop="False"/>
+                        <RepeatButton x:Name="PART_DownButton" Grid.Column="1" Grid.Row="1" Style="{StaticResource NumericButtonDown}" Focusable="False" IsTabStop="False"/>
                     </Grid>
                 </ControlTemplate>
             </Setter.Value>

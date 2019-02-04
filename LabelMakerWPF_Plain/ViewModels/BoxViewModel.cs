@@ -311,6 +311,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                         return result;
                     }
                 }
+
                 return resultOK;
             }
         }

@@ -18,6 +18,8 @@ namespace LabelMakerWPF_Plain.Print
 
         public SmallBoxLablePrint(BoxPrintModel model)
         {
+            settings = new PrinterSettingsModel();
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(settings.PaperSize);
             this.model = model;
             InitialSettingsAndPrint();
         }
@@ -28,6 +30,8 @@ namespace LabelMakerWPF_Plain.Print
 
         BoxPrintModel model;
         DrawInfoModel drawModel = new DrawInfoModel();
+        Dictionary<string, PaperSizeModel> PaperSize;
+        PrinterSettingsModel settings;
 
         #endregion
 
@@ -36,9 +40,8 @@ namespace LabelMakerWPF_Plain.Print
         private void InitialSettingsAndPrint()
         {
             PrintDocument printDocument = new PrintDocument();
-            PrinterSettingsModel settings = new PrinterSettingsModel();
-            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.printerSettings);
-            printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", 394, 197);
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
+            printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["100x50"].PrintWidth, PaperSize["100x50"].PrintHeight);
             printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.PrinterSettings.Copies = model.Copies;
@@ -115,16 +118,16 @@ namespace LabelMakerWPF_Plain.Print
                 //Checking if string fit on a lable and changing until it does
                 while (posX < 0)
                 {
+                    size--;
                     box = new Font(drawModel.box.FontFamily, size);
                     posF = graphics.MeasureString(lableNumber, box).ToPointF();
                     posX = (140 - posF.X) / 2;
                     posY = (101.1914066f - posF.Y) / 2;
-                    if(posX<0)size--;
                 }
 
                 graphics.DrawString(lableNumber, box, Brushes.Black, lableNumberStartX + posX, lableNumberStartY + posY);
             }
-        }
+        }       
 
         #endregion
     }

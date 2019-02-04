@@ -134,7 +134,7 @@
                           SelectedIndex="0" 
                           Width="70" 
                           SelectedItem="{Binding SelectedPaperSize}" 
-                          ItemsSource="{Binding PaperSize.Keys}"/>
+                          ItemsSource="{Binding PaperSize.Keys}" IsTabStop="False"/>
                 
             </DockPanel>  
             
@@ -154,18 +154,18 @@
                      Width="{Binding WidthTextBox, Mode=TwoWay}" 
                      Height="{Binding HeightTextBox, Mode=TwoWay}"
                      VerticalContentAlignment="{Binding VerticalContentAlignment}"
-                     HorizontalContentAlignment="{Binding HorizontalContentAlignment}"/>
+                     HorizontalContentAlignment="{Binding HorizontalContentAlignment}" TabIndex="1"/>
 
              <GroupBox Header="Liczba sztuk do wydrukowania">
                 <DockPanel LastChildFill="False">
                     <TextBlock Margin="5" Text="Ilość etykiet:"/>
-                    <Controls:NumericUpDown Margin="0,5,0,0" x:Name="Copies" Value="{Binding Copies, Mode=TwoWay}"/>
+                    <Controls:NumericUpDown Margin="0,5,0,0" x:Name="Copies" Value="{Binding Copies, Mode=TwoWay}" TabIndex="2" Focusable="False"/>
                 </DockPanel>
              </GroupBox>
 
             <DockPanel LastChildFill="False" Grid.Row="2" Grid.Column="0" Margin="0,10,0,0">
-                <Button x:Name="Print" DockPanel.Dock="Left" Command="{Binding PrintCommand}" Style="{StaticResource PrintButton}"/>
-                <Button x:Name="Clear" DockPanel.Dock="Right" Command="{Binding ClearCommand}" Style="{StaticResource ClearButton}"/>
+                <Button x:Name="Print" DockPanel.Dock="Left" Command="{Binding PrintCommand}" Style="{StaticResource PrintButton}" IsTabStop="False"/>
+                <Button x:Name="Clear" DockPanel.Dock="Right" Command="{Binding ClearCommand}" Style="{StaticResource ClearButton}" IsTabStop="False"/>
             </DockPanel>
     </StackPanel>    
 </UserControl>

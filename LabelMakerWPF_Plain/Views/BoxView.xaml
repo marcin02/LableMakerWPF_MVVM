@@ -46,13 +46,13 @@
                     <TextBlock Grid.Column="1" Grid.Row="2" Text="Nr zamówienia:"/>
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="Nr paczki:"/>
 
-                    <TextBox Grid.Column="2" Grid.Row="1" x:Name="CompanyTxt" MaxLength="36" Text="{Binding Company, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" />
-                    <TextBox Grid.Column="2" Grid.Row="2" x:Name="OrderTxt" MaxLength="30" Text="{Binding Order}" />
+                    <TextBox Grid.Column="2" Grid.Row="1" x:Name="CompanyTxt" MaxLength="36" Text="{Binding Company, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="1"/>
+                    <TextBox Grid.Column="2" Grid.Row="2" x:Name="OrderTxt" MaxLength="30" Text="{Binding Order}" TabIndex="2" />
                 <DockPanel Grid.Column="2" Grid.Row="3" LastChildFill="False">
-                    <Controls:NumericUpDown x:Name="box_0" Value="{Binding Box_0, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}"/>
+                    <Controls:NumericUpDown x:Name="box_0" Value="{Binding Box_0, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="3" Focusable="False"/>
                     <TextBlock VerticalAlignment="Center" Margin="5,0,5,0"  Text="z"/>
-                    <Controls:NumericUpDown x:Name="box_1" Value="{Binding Box_1, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}"/>
-                    <CheckBox x:Name="BoxCheck" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding CheckBoxIsChecked, UpdateSourceTrigger=PropertyChanged}"/>
+                    <Controls:NumericUpDown x:Name="box_1" Value="{Binding Box_1, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="4" Focusable="False"/>
+                    <CheckBox x:Name="BoxCheck" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding CheckBoxIsChecked, UpdateSourceTrigger=PropertyChanged}" IsTabStop="False"/>
                 </DockPanel>
             </Grid>
             </GroupBox>
@@ -76,19 +76,19 @@
                         <RowDefinition Height="auto"/>
                     </Grid.RowDefinitions>
 
-                    <TextBox x:Name="Item_0" Text="{Binding Item_0, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Width="180" MaxLength="22"/>
-                    <TextBox x:Name="Item_1" Text="{Binding Item_1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" Width="180" MaxLength="22"/>
-                    <TextBox x:Name="Item_2" Text="{Binding Item_2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" Width="180" MaxLength="22"/>
-                    <TextBox x:Name="Item_3" Text="{Binding Item_3, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Width="180" MaxLength="22"/>
-                    <TextBox x:Name="Item_4" Text="{Binding Item_4, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="5" Width="180" MaxLength="22"/>
-                    <TextBox x:Name="Item_5" Text="{Binding Item_5, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="6" Width="180" MaxLength="22"/>
+                    <TextBox x:Name="Item_0" Text="{Binding Item_0, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="1" Width="180" MaxLength="22" TabIndex="5"/>
+                    <TextBox x:Name="Item_1" Text="{Binding Item_1, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="2" Width="180" MaxLength="22" TabIndex="7"/>
+                    <TextBox x:Name="Item_2" Text="{Binding Item_2, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="3" Width="180" MaxLength="22" TabIndex="9"/>
+                    <TextBox x:Name="Item_3" Text="{Binding Item_3, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="4" Width="180" MaxLength="22" TabIndex="11"/>
+                    <TextBox x:Name="Item_4" Text="{Binding Item_4, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="5" Width="180" MaxLength="22" TabIndex="13"/>
+                    <TextBox x:Name="Item_5" Text="{Binding Item_5, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" Grid.Row="6" Width="180" MaxLength="22" TabIndex="15"/>
 
-                    <Controls:NumericUpDown x:Name="Qnt_0" Value="{Binding Qnt_0, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1"/>
-                    <Controls:NumericUpDown x:Name="Qnt_1" Value="{Binding Qnt_1, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2"/>
-                    <Controls:NumericUpDown x:Name="Qnt_2" Value="{Binding Qnt_2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3"/>
-                    <Controls:NumericUpDown x:Name="Qnt_3" Value="{Binding Qnt_3, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4"/>
-                    <Controls:NumericUpDown x:Name="Qnt_4" Value="{Binding Qnt_4, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5"/>
-                    <Controls:NumericUpDown x:Name="Qnt_5" Value="{Binding Qnt_5, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="6"/>
+                    <Controls:NumericUpDown x:Name="Qnt_0" Value="{Binding Qnt_0, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="1" TabIndex="6" Focusable="False"/>
+                    <Controls:NumericUpDown x:Name="Qnt_1" Value="{Binding Qnt_1, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="2" TabIndex="8" Focusable="False"/>
+                    <Controls:NumericUpDown x:Name="Qnt_2" Value="{Binding Qnt_2, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="3" TabIndex="10" Focusable="False"/>
+                    <Controls:NumericUpDown x:Name="Qnt_3" Value="{Binding Qnt_3, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="4" TabIndex="12" Focusable="False"/>
+                    <Controls:NumericUpDown x:Name="Qnt_4" Value="{Binding Qnt_4, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="5" TabIndex="14" Focusable="False"/>
+                    <Controls:NumericUpDown x:Name="Qnt_5" Value="{Binding Qnt_5, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" Grid.Column="2" Grid.Row="6" TabIndex="16" Focusable="False"/>
 
                     <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="1" Text="szt."/>
                     <TextBlock Margin="10,0,0,0" Grid.Column="3" Grid.Row="2" Text="szt."/>
@@ -102,14 +102,14 @@
             <GroupBox Header="Liczba sztuk do wydrukowania">
                 <DockPanel LastChildFill="False">
                     <TextBlock Margin="5" Text="Ilość etykiet:"/>
-                    <Controls:NumericUpDown Margin="0,5,0,0" x:Name="Copies" Value="{Binding Copies, Mode=TwoWay}"/>
+                    <Controls:NumericUpDown Margin="0,5,0,0" x:Name="Copies" Value="{Binding Copies, Mode=TwoWay}" TabIndex="17" Focusable="False"/>
                 </DockPanel>
             </GroupBox>
 
             <DockPanel Margin="0,10,0,0" LastChildFill="False">
-                <Button Style="{StaticResource PrintButton}" Command="{Binding PrintCommand}" DockPanel.Dock="Left"/>
-                <Button Margin="10,0,0,0" Command="{Binding NextCommand}" Content="Utwórz kolejną" />
-                <Button DockPanel.Dock="Right" Command="{Binding ClearCommand}" Style="{StaticResource ClearButton}"/>
+                <Button Style="{StaticResource PrintButton}" Command="{Binding PrintCommand}" DockPanel.Dock="Left" IsTabStop="False"/>
+                <Button Margin="10,0,0,0" Command="{Binding NextCommand}" Content="Utwórz kolejną" IsTabStop="False" />
+                <Button DockPanel.Dock="Right" Command="{Binding ClearCommand}" Style="{StaticResource ClearButton}" IsTabStop="False"/>
             </DockPanel>
         </StackPanel>       
 </UserControl>

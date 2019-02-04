@@ -9,6 +9,7 @@ namespace LabelMakerWPF_Plain.Models
 {
     public class PrinterSettingsModel
     {
-        public string printerSettings { get; } =  Settings.Default.printerSettings;
+        public string PrintSettings { get; } =  Settings.Default.printerSettings;
+        public string PaperSize { get; } = Settings.Default.PaperSize;
     }
 }

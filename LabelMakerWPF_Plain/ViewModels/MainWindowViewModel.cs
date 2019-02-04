@@ -17,6 +17,7 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         public MainWindowViewModel()
         {
+            SetPaperSize setPaperSize = new SetPaperSize();
             ShowBoxCommand = new RelayCommand(ShowBox);
             ShowSettingsCommand = new RelayCommand(ShowSettings);
             ShowBigBoxCommand = new RelayCommand(ShowBigBox);

@@ -79,13 +79,6 @@ namespace LabelMakerWPF_Plain.Controls
             }
         }
 
-        private void RemoveFocus()
-        {
-            Focusable = true;
-            Focus();
-            Focusable = false;
-        }
-
         private void AttachTextBox()
         {
             var textBox = GetTemplateChild("PART_TextBoxNum") as TextBox;

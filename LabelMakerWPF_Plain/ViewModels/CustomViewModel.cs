@@ -1,6 +1,7 @@
 ﻿using LabelMakerWPF_Plain.Converters;
 using LabelMakerWPF_Plain.Models;
 using LabelMakerWPF_Plain.Print;
+using LabelMakerWPF_Plain.Properties;
 using LabelMakerWPF_Plain.Tools;
 using System;
 using System.Collections.Generic;
@@ -154,8 +155,8 @@ namespace LabelMakerWPF_Plain.ViewModels
                 FontSize = this._selectedFontSize,
                 FontStyle = this._selectedFontStyle,
                 FontWeight = this._selectedFontWeight,
-                PaperHeight = this.PaperSize[_selectedPaperSize].Height,
-                PaperWidth = this.PaperSize[_selectedPaperSize].Width,
+                PaperHeight = this.PaperSize[_selectedPaperSize].PrintHeight,
+                PaperWidth = this.PaperSize[_selectedPaperSize].PrintWidth,
                 HorizontalAlignment = this._horizontalContentAlignment,
                 VerticalAlignment = this._verticalContentAlignment
             };
@@ -183,8 +184,8 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         private void ChangePaperSize(string value)
         {
-            WidthTextBox = PaperSize[value].Width;
-            HeightTextBox = PaperSize[value].Height;
+            WidthTextBox = PaperSize[value].OnScreenWidth;
+            HeightTextBox = PaperSize[value].OnScreenHeight;
         }
 
         private void GetFontSize()
@@ -197,10 +198,9 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         private void GetPaperSize()
         {
-            PaperSize = new Dictionary<string, PaperSizeModel>();
-
-            PaperSize.Add("100x50", new PaperSizeModel { Width = 377, Height = 189 });
-            PaperSize.Add("100x100", new PaperSizeModel { Width = 377, Height = 377 });
+            ConvertSettings cs = new ConvertSettings();
+            PrinterSettingsModel settingsModel = new PrinterSettingsModel();
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)cs.SettingFromString(settingsModel.PaperSize);
         }
 
         private void Print(object obj)

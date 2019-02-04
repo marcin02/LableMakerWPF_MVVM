@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+using LabelMakerWPF_Plain.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,7 @@ namespace LabelMakerWPF_Plain.Views
         public CertificationNominateView()
         {
             InitializeComponent();
+            DataContext = new CertificationNominateViewModel();
         }
     }
 }

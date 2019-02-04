@@ -120,7 +120,7 @@
 
         <Grid Grid.Column="1" Grid.Row="0" Background="RoyalBlue" >
             <TextBlock Style="{StaticResource HeaderLableTrigger}" FontFamily="CenturyGothic" FontSize="17" FontWeight="ExtraLight" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
-            <Button Command="{Binding ShowSettingsCommand}" ToolTip="Ustawienia drukarki" BorderThickness="0" Background="RoyalBlue" Width="35" Height="35" HorizontalAlignment="Right">
+            <Button Command="{Binding ShowSettingsCommand}" ToolTip="Ustawienia drukarki" BorderThickness="0" Background="RoyalBlue" Width="35" Height="35" HorizontalAlignment="Right" IsTabStop="False">
                 <Button.Content>
                     <Image Source="/LabelMakerWPF_Plain;component/Resources/icons8-services-512.png" Width="32" Height="32"/>
                 </Button.Content>
@@ -152,17 +152,17 @@
                               Grid.ColumnSpan="2" 
                               Grid.Row="0" 
                               Command="{Binding ShowBoxCommand}"
-                              Style="{StaticResource BoxBtnTrigger}"/>
+                              Style="{StaticResource BoxBtnTrigger}" IsTabStop="False"/>
 
                 <StackPanel x:Name="BoxPanel" Style="{StaticResource ExpandBox}" Grid.Column="2" Grid.Row="1">
                     <ToggleButton x:Name="SmallBtn"
                             Command="{Binding ShowBoxCommand}"
                             Content="Mała" 
-                            Style="{StaticResource SmallBoxTrigger}"/>
+                            Style="{StaticResource SmallBoxTrigger}" IsTabStop="False"/>
                     <ToggleButton x:Name="LargeBtn" 
                             Command="{Binding ShowBigBoxCommand}"                                  
                             Content="Duża" 
-                            Style="{StaticResource BigBoxTrigger}"/>
+                            Style="{StaticResource BigBoxTrigger}" IsTabStop="False"/>
                 </StackPanel>
 
                 <ToggleButton x:Name="CntBtn"                               
@@ -171,17 +171,17 @@
                               Grid.ColumnSpan="2" 
                               Grid.Row="2" 
                               Command="{Binding ShowCertificationNominateCommand}"
-                              Style="{StaticResource CntBtnTrigger}"/>
+                              Style="{StaticResource CntBtnTrigger}" IsTabStop="False"/>
 
                 <StackPanel x:Name="CtnPanel" Style="{StaticResource ExpandCnt}" Grid.Column="2" Grid.Row="3">
                     <ToggleButton x:Name="NominateBtn" 
                                   Content="Znamionowa"
                                   Command="{Binding ShowCertificationNominateCommand}"
-                                  Style="{StaticResource NominateBtnTrigger}"/>
+                                  Style="{StaticResource NominateBtnTrigger}" IsTabStop="False"/>
                     <ToggleButton x:Name="LvlBtn" 
                                   Content="Na poziom" 
                                   Command="{Binding ShowCertificationLvlCommand}"
-                                  Style="{StaticResource LvlBtnTrigger}"/>
+                                  Style="{StaticResource LvlBtnTrigger}" IsTabStop="False"/>
                 </StackPanel>
 
                 <ToggleButton x:Name="BlankBtn"
@@ -190,7 +190,7 @@
                               Grid.Column="1" 
                               Grid.ColumnSpan="2"
                               Grid.Row="4" 
-                              Style="{StaticResource CustomBtnTrigger}"/>
+                              Style="{StaticResource CustomBtnTrigger}" IsTabStop="False"/>
             </Grid>
         </DockPanel>
 
