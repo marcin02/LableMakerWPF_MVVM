@@ -15,9 +15,6 @@
         MinWidth="575" 
         Background="{x:Static SystemColors.ControlBrush}" 
         WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
-    <Window.DataContext>
-        <vm:MainWindowViewModel/>
-    </Window.DataContext>
 
     <Window.Resources>
         <DataTemplate DataType="{x:Type vm:BoxViewModel}">

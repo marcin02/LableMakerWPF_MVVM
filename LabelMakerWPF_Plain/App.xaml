@@ -16,7 +16,7 @@
         </Style>
 
         <Style x:Key="ClearButton" BasedOn="{StaticResource PrintButton}" TargetType="Button">
-            <Setter Property="Background" Value="Red"/>
+            <Setter Property="Background" Value="#E83C3C"/>
             <Setter Property="Width" Value="113"/>
             <Setter Property="Content" Value="Wyczyść wszystko"/>
         </Style>
@@ -33,12 +33,17 @@
             <Setter Property="HorizontalContentAlignment" Value="Center"/>
             <Setter Property="VerticalContentAlignment" Value="Center"/>
             <Setter Property="IsChecked" Value="False"/>
+            <EventSetter Event="MouseEnter" Handler="ToggleButton_MouseEnter"/>
+            <EventSetter Event="MouseLeave" Handler="ToggleButton_MouseLeave"/>
+            <EventSetter Event="Checked" Handler="ToggleButton_Checked"/>
+            <EventSetter Event="Unchecked" Handler="ToggleButton_Unchecked"/>
+            
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">
-                        <Grid x:Name="Border" >
+                        <Grid x:Name="Border" Background="{TemplateBinding Background}">
                             <DockPanel>
-                                <Rectangle x:Name="Rct" Margin="2,2,0,2" Height="41" Width="10" Fill="RoyalBlue" Visibility="Collapsed"/>
+                                <Rectangle x:Name="Rct" Margin="2,2,0,2" Height="41" Width="0" Fill="RoyalBlue" />
                                 <ContentPresenter x:Name="ContentPresenter" 
                                                   Content="{TemplateBinding Content}" 
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
@@ -46,44 +51,64 @@
                             </DockPanel>
                         </Grid>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border"  Property="Background" Value="{StaticResource SideMenuOnMouseOverColor}"/>
-                            </Trigger>
                             <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Rct" Property="Visibility" Value="Visible"/>
+                                <Setter TargetName="Rct" Property="Width" Value="10"/>
                             </Trigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
-            </Setter>
+            </Setter>        
         </Style>
 
-        <Style x:Key="SideMenuBtnSmall" BasedOn="{StaticResource SideMenuBtnLarge}" TargetType="ToggleButton">
+         <Style x:Key="SideMenuBtnSmall" BasedOn="{StaticResource SideMenuBtnLarge}" TargetType="ToggleButton">
             <Setter Property="Height" Value="23"/>
             <Setter Property="Width" Value="115"/>
             <Setter Property="FontSize" Value="8.5pt"/>
             <Setter Property="IsChecked" Value="False"/>
-        </Style>
-
-        
+            <EventSetter Event="Click" Handler="ToggleButton_Click"/>
+        </Style>        
 
         <Style x:Key="ExpandBox" TargetType="StackPanel">
-            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Height" Value="0"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding ElementName=BoxBtn, Path=IsChecked}" Value="True">
-                    <Setter Property="Visibility" Value="Visible"/>
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
                 </DataTrigger>
-
             </Style.Triggers>
         </Style>
 
         <Style x:Key="ExpandCnt" TargetType="StackPanel">
-            <Setter Property="Visibility" Value="Collapsed"/>
+            <Setter Property="Height" Value="0"/>
             <Style.Triggers>
                 <DataTrigger Binding="{Binding ElementName=CntBtn, Path=IsChecked}" Value="True">
-                    <Setter Property="Visibility" Value="Visible"/>
+                    <DataTrigger.EnterActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="60" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.EnterActions>
+                    <DataTrigger.ExitActions>
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation Storyboard.TargetProperty="Height" To="0" Duration="0:0:0.3"/>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </DataTrigger.ExitActions>
                 </DataTrigger>
-
             </Style.Triggers>
         </Style>
     </Application.Resources>
