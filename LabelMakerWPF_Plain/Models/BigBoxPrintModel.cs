@@ -7,15 +7,15 @@ using System.Threading.Tasks;
 
 namespace LabelMakerWPF_Plain.Models
 {
-    public class BigBoxPrintModel : IBoxPrintModel
+    public class BigBoxPrintModel
     {
         public string Company  { get; set; }
         public string Order { get; set; }
-        public string contactPerson { get; set; }
-        public string phoneNumber { get; set; }
-        public string street { get; set; }
-        public string zipCode { get; set; }
-        public string city { get; set; }
+        public string ContactPerson { get; set; }
+        public string PhoneNumber { get; set; }
+        public string Street { get; set; }
+        public string ZipCode { get; set; }
+        public string City { get; set; }
         public int Box0 { get; set; }
         public int Box1 { get; set; }
         public List<string> Items { get; set; }

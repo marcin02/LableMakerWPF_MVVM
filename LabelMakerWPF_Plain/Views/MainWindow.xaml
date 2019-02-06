@@ -32,77 +32,6 @@
         <DataTemplate DataType="{x:Type vm:CustomViewModel}">
             <views:CustomView/>
         </DataTemplate>
-        
-        <!--Side Menu behavior logic-->
-        <Style x:Key="SmallBoxTrigger" BasedOn="{StaticResource SideMenuBtnSmall}" TargetType="ToggleButton">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="BoxViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="BigBoxTrigger" BasedOn="{StaticResource SideMenuBtnSmall}" TargetType="ToggleButton">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="BigBoxViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="NominateBtnTrigger" BasedOn="{StaticResource SideMenuBtnSmall}" TargetType="ToggleButton">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="CertificationNominateViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="LvlBtnTrigger" BasedOn="{StaticResource SideMenuBtnSmall}" TargetType="ToggleButton">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="CertificationLvlViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="BoxBtnTrigger" BasedOn="{StaticResource SideMenuBtnLarge}" TargetType="ToggleButton">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="BoxViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="BigBoxViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="CntBtnTrigger" BasedOn="{StaticResource SideMenuBtnLarge}" TargetType="ToggleButton">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="CertificationNominateViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="CertificationLvlViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <Style x:Key="CustomBtnTrigger" BasedOn="{StaticResource SideMenuBtnLarge}" TargetType="ToggleButton">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding SelectedViewModel.ViewModelName}" Value="CustomViewModel">
-                    <Setter Property="IsChecked" Value="True"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
-        <!--HeaderLable behavior logic-->
-        <Style x:Key="HeaderLableTrigger" TargetType="TextBlock">
-            <Style.Triggers>
-                <DataTrigger Binding="{Binding ElementName=BoxBtn, Path=IsChecked}" Value="True">
-                    <Setter Property="Text" Value="{Binding ElementName=BoxBtn, Path=Content}"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding ElementName=CntBtn, Path=IsChecked}" Value="True">
-                    <Setter Property="Text" Value="{Binding ElementName=CntBtn, Path=Content}"/>
-                </DataTrigger>
-                <DataTrigger Binding="{Binding ElementName=BlankBtn, Path=IsChecked}" Value="True">
-                    <Setter Property="Text" Value="{Binding ElementName=BlankBtn, Path=Content}"/>
-                </DataTrigger>
-            </Style.Triggers>
-        </Style>
     </Window.Resources>
     
     <Grid>
@@ -116,7 +45,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="1" Grid.Row="0" Background="RoyalBlue" >
-            <TextBlock Style="{StaticResource HeaderLableTrigger}" FontFamily="CenturyGothic" FontSize="17" FontWeight="ExtraLight" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock FontFamily="CenturyGothic" FontSize="17" FontWeight="ExtraLight" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
             <Button Command="{Binding ShowSettingsCommand}" ToolTip="Ustawienia drukarki" BorderThickness="0" Background="RoyalBlue" Width="35" Height="35" HorizontalAlignment="Right" IsTabStop="False">
                 <Button.Content>
                     <Image Source="/LabelMakerWPF_Plain;component/Resources/icons8-services-512.png" Width="32" Height="32"/>
@@ -148,18 +77,28 @@
                               Grid.Column="1" 
                               Grid.ColumnSpan="2" 
                               Grid.Row="0" 
-                              Command="{Binding ShowBoxCommand}"
-                              Style="{StaticResource BoxBtnTrigger}" IsTabStop="False"/>
+                              Style="{StaticResource SideMenuBtnLarge}" 
+                              IsChecked="{Binding BoxBtnCheck, Mode=TwoWay}" 
+                              IsTabStop="False"/>
 
-                <StackPanel x:Name="BoxPanel" Style="{StaticResource ExpandBox}" Grid.Column="2" Grid.Row="1">
+                <StackPanel x:Name="BoxPanel" 
+                            Style="{StaticResource ExpandBox}" 
+                            Grid.Column="2" 
+                            Grid.Row="1">
+                    
                     <ToggleButton x:Name="SmallBtn"
                             Command="{Binding ShowBoxCommand}"
                             Content="Mała" 
-                            Style="{StaticResource SmallBoxTrigger}" IsTabStop="False"/>
+                            Style="{StaticResource SideMenuBtnSmall}"
+                            IsChecked="{Binding SmallBoxBtnCheck, Mode=TwoWay}" 
+                            IsTabStop="False"/>
+                    
                     <ToggleButton x:Name="LargeBtn" 
                             Command="{Binding ShowBigBoxCommand}"                                  
                             Content="Duża" 
-                            Style="{StaticResource BigBoxTrigger}" IsTabStop="False"/>
+                            Style="{StaticResource SideMenuBtnSmall}" 
+                            IsChecked="{Binding BigBoxBtnCheck, Mode=TwoWay}" 
+                            IsTabStop="False"/>
                 </StackPanel>
 
                 <ToggleButton x:Name="CntBtn"                               
@@ -167,18 +106,29 @@
                               Grid.Column="1" 
                               Grid.ColumnSpan="2" 
                               Grid.Row="2" 
-                              Command="{Binding ShowCertificationNominateCommand}"
-                              Style="{StaticResource CntBtnTrigger}" IsTabStop="False"/>
+                              Style="{StaticResource SideMenuBtnLarge}" 
+                              IsChecked="{Binding CertificationBtnCheck, Mode=TwoWay}"
+                              IsTabStop="False"/>
 
-                <StackPanel x:Name="CtnPanel" Style="{StaticResource ExpandCnt}" Grid.Column="2" Grid.Row="3">
+                <StackPanel x:Name="CtnPanel" 
+                            Style="{StaticResource ExpandCnt}" 
+                            Grid.Column="2" 
+                            Grid.Row="3">
+                    
                     <ToggleButton x:Name="NominateBtn" 
                                   Content="Znamionowa"
                                   Command="{Binding ShowCertificationNominateCommand}"
-                                  Style="{StaticResource NominateBtnTrigger}" IsTabStop="False"/>
+                                  Style="{StaticResource SideMenuBtnSmall}" 
+                                  IsChecked="{Binding CertificationNominateBtnCheck, Mode=TwoWay}" 
+                                  IsTabStop="False"/>
+                    
                     <ToggleButton x:Name="LvlBtn" 
                                   Content="Na poziom" 
                                   Command="{Binding ShowCertificationLvlCommand}"
-                                  Style="{StaticResource LvlBtnTrigger}" IsTabStop="False"/>
+                                  Style="{StaticResource SideMenuBtnSmall}" 
+                                  IsChecked="{Binding CertificationLvlBtnCheck, Mode=TwoWay}" 
+                                  IsTabStop="False"/>
+                    
                 </StackPanel>
 
                 <ToggleButton x:Name="BlankBtn"
@@ -187,7 +137,9 @@
                               Grid.Column="1" 
                               Grid.ColumnSpan="2"
                               Grid.Row="4" 
-                              Style="{StaticResource CustomBtnTrigger}" IsTabStop="False"/>
+                              Style="{StaticResource SideMenuBtnLarge}" 
+                              IsChecked="{Binding CustomBtnCheck, Mode=TwoWay}"
+                              IsTabStop="False"/>
             </Grid>
         </DockPanel>
 

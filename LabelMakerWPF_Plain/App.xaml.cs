@@ -22,12 +22,38 @@ namespace LabelMakerWPF_Plain
 
         private void ToggleButton_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            EnterAnimation(sender);
+            ToggleButton btn = (ToggleButton)sender;
+            if (btn.IsChecked != true)
+            {
+                EnterAnimation(sender);
+            }
         }
 
         private void ToggleButton_MouseLeave(object sender, System.Windows.Input.MouseEventArgs e)
         {
-            ExitAnimation(sender);
+            ToggleButton btn = (ToggleButton)sender;
+            if (btn.IsChecked != true)
+            {
+                ExitAnimation(sender);
+            }
+        }
+
+        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
+        {
+            ToggleButton btn = (ToggleButton)sender;
+            if (btn.IsChecked != true)
+            {
+                ExitAnimation(sender);
+            }
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            ToggleButton btn = (ToggleButton)sender;
+            if (btn.IsChecked == true)
+            {
+                EnterAnimation(sender);
+            }
         }
 
         #endregion
@@ -49,8 +75,6 @@ namespace LabelMakerWPF_Plain
             Storyboard colorFade = new Storyboard();
             DoubleAnimation rectangleExpand = doubleAnimation;
             ColorAnimation color = colorAnimation;
-            Storyboard.SetTargetName(rct, "Rct");
-            Storyboard.SetTargetName(grid, "Border");
             Storyboard.SetTargetProperty(animation, new PropertyPath("Width"));
             Storyboard.SetTargetProperty(colorFade, new PropertyPath("Background.Color"));
             animation.Children.Add(rectangleExpand);
@@ -117,41 +141,17 @@ namespace LabelMakerWPF_Plain
         #region Event helper methods
 
         private async void EnterAnimation(object sender)
-        {
-            ToggleButton btn = (ToggleButton)sender;
-
-            if (btn.IsChecked != true)
-            {
-                await AnimateUIButton(sender, EnterDoubleAnimation(), EnterColorAnimation());
-            }
+        {          
+            await AnimateUIButton(sender, EnterDoubleAnimation(), EnterColorAnimation());  
         }
 
         private async void ExitAnimation(object sender)
         {
-            ToggleButton btn = (ToggleButton)sender;
-
-            if (btn.IsChecked != true)
-            {
-                await AnimateUIButton(sender, ExitDoubleAnimation(), ExitColorAnimation());
-            }
+            await AnimateUIButton(sender, ExitDoubleAnimation(), ExitColorAnimation());
         }
+
 
         #endregion
 
-        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-          
-        }
-
-        private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
-        {
-            ExitAnimation(sender);
-        }
-
-        private void ToggleButton_Click(object sender, RoutedEventArgs e)
-        {
-            ToggleButton btn = (ToggleButton)sender;
-            btn.IsChecked = true;
-        }
     }
 }

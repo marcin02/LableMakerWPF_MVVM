@@ -35,9 +35,8 @@
             <Setter Property="IsChecked" Value="False"/>
             <EventSetter Event="MouseEnter" Handler="ToggleButton_MouseEnter"/>
             <EventSetter Event="MouseLeave" Handler="ToggleButton_MouseLeave"/>
-            <EventSetter Event="Checked" Handler="ToggleButton_Checked"/>
             <EventSetter Event="Unchecked" Handler="ToggleButton_Unchecked"/>
-            
+            <EventSetter Event="Checked" Handler="ToggleButton_Checked"/>
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ToggleButton">
@@ -50,11 +49,6 @@
                                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
                             </DockPanel>
                         </Grid>
-                        <ControlTemplate.Triggers>
-                            <Trigger Property="IsChecked" Value="True">
-                                <Setter TargetName="Rct" Property="Width" Value="10"/>
-                            </Trigger>
-                        </ControlTemplate.Triggers>
                     </ControlTemplate>
                 </Setter.Value>
             </Setter>        
@@ -65,7 +59,6 @@
             <Setter Property="Width" Value="115"/>
             <Setter Property="FontSize" Value="8.5pt"/>
             <Setter Property="IsChecked" Value="False"/>
-            <EventSetter Event="Click" Handler="ToggleButton_Click"/>
         </Style>        
 
         <Style x:Key="ExpandBox" TargetType="StackPanel">

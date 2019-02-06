@@ -1,4 +1,6 @@
-﻿using LabelMakerWPF_Plain.Tools;
+﻿using LabelMakerWPF_Plain.Models;
+using LabelMakerWPF_Plain.Print;
+using LabelMakerWPF_Plain.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,14 @@ namespace LabelMakerWPF_Plain.ViewModels
 {
     public class BigBoxViewModel : BoxViewModel
     {
+        #region Constructor
+
+        public BigBoxViewModel()
+        {
+            PrintBigCommand = new RelayCommand(Print);
+        }
+
+        #endregion
         #region Private propeties
 
         private string _city;
@@ -50,6 +60,12 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         #endregion
 
+        #region Commands
+
+        public RelayCommand PrintBigCommand {get; set;}
+
+        #endregion
+
         #region Methods
 
         private string NumbersOnly(string value)
@@ -76,6 +92,27 @@ namespace LabelMakerWPF_Plain.ViewModels
             return _zipCode;
         }
 
+        private void Print(object obj)
+        {
+            FillList();
+            BigBoxPrintModel model = new BigBoxPrintModel
+            {
+                Company = _company,
+                Order = _order,
+                ContactPerson = _conteacPerson,
+                PhoneNumber = _phoneNumber,
+                Street = _street,
+                ZipCode = _zipCode,
+                City = _city,
+                Box0 = _box_0,
+                Box1 = _box_1,
+                Items = _items,
+                Quantity = _quantity,
+                Copies = _copies
+            };
+
+            BigBoxLablePrint print = new BigBoxLablePrint(model);
+        }
 
 
         #endregion

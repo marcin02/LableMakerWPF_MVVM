@@ -110,6 +110,7 @@
     <Compile Include="Models\SelectedViewModel.cs" />
     <Compile Include="PrinterSettings\PSettings.cs" />
     <Compile Include="PrinterSettings\SetPaperSize.cs" />
+    <Compile Include="Print\BigBoxLablePrint.cs" />
     <Compile Include="Print\CertificationLvlLablePrint.cs" />
     <Compile Include="Print\CertificationNominateLablePrint.cs" />
     <Compile Include="Print\CustomLablePrint.cs" />
