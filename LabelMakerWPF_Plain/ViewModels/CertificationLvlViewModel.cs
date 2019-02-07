@@ -23,7 +23,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         private Int16 _copies = 1;
         private int _lvlWeight;
         private bool _canValidate = false;
-        private bool _error = true;
+        private bool _error = false;
 
         #endregion
 
@@ -83,15 +83,15 @@ namespace LabelMakerWPF_Plain.ViewModels
         private void Print(object obj)
         {
             Validation();
-            if(_error == false)
+            if(!_error)
             {
                 AddToPrint();
-                _error = true;                
             }
             else
             {
                 MessagesModel messages = new MessagesModel();
                 messages.BoxError();
+                _error = false;                
             }         
         }
 
@@ -118,11 +118,11 @@ namespace LabelMakerWPF_Plain.ViewModels
 
                     if (_lvlWeight == 0)
                     {                        
+                        _error = true;
                         return resultNOK;
                     }
                     else
                     {
-                        _error = false;
                         return resultOK;
                     } 
                 }

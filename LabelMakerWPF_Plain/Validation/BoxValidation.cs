@@ -9,6 +9,7 @@ namespace LabelMakerWPF_Plain.Validation
         {
             string resultOK = null;
             string resultNOK = "Błąd";
+            int blankBoxes = 0;
 
             if(name == "Company" && string.IsNullOrWhiteSpace(vd[name].Company))
             {
@@ -27,10 +28,21 @@ namespace LabelMakerWPF_Plain.Validation
                 return resultNOK;
             }
 
-            //else if(string.IsNullOrWhiteSpace(vd[name].Items) && vd[name].Quantity == 0)
-            //{
-            //    return resultNOK;
-            //}
+            if (name!="Company")
+            {
+                foreach (KeyValuePair<string, BoxValidationModel> item in vd)
+                {
+                    if (string.IsNullOrWhiteSpace(item.Value.Items) && item.Value.Quantity == 0)
+                    {
+                        blankBoxes++;
+                    }
+                } 
+            }
+
+            if(blankBoxes==13)
+            {
+                return resultNOK;
+            }
 
             return resultOK;
         }

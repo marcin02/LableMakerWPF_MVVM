@@ -9,7 +9,7 @@
         xmlns:converters="clr-namespace:LabelMakerWPF_Plain.Converters"
 
         mc:Ignorable="d"
-        Title="Edytor etykiet by Marcin Wiliński" 
+        Title="{Binding Title}" 
         SizeToContent="WidthAndHeight"
         MinHeight="475" 
         MinWidth="575" 

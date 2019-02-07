@@ -1,11 +1,9 @@
-﻿
-using LabelMakerWPF_Plain.Interfaces;
-using System.Drawing;
+﻿using System.Drawing;
 
 
 namespace LabelMakerWPF_Plain.Models
 {
-    public class DrawInfoModel : IDrawInfoModel
+    public class DrawInfoModel
     {
         public Font header { get; private set; } 
         public Font header2 { get; private set; }

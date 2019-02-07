@@ -22,13 +22,21 @@ namespace LabelMakerWPF_Plain.Converters
         }
 
         public object SettingFromString(string settings)
-        {           
+        {
+            try
+            {
                 BinaryFormatter bf = new BinaryFormatter();
                 using (var ms = new MemoryStream(Convert.FromBase64String(settings)))
                 {
                     var output = bf.Deserialize(ms);
                     return output;
                 }
+            }
+            catch (Exception)
+            {
+                return new System.Drawing.Printing.PrinterSettings();
+            }
+
         }
     }
 }

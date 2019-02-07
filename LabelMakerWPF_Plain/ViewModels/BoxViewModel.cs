@@ -41,7 +41,6 @@ namespace LabelMakerWPF_Plain.ViewModels
         private int _qnt_4 = 0;
         private int _qnt_5 = 0;
         private short _copies = 1;
-        private bool _canPrint = false;
         private bool _canValidate = false;
         private bool _error = false;
         private bool _checkBoxIsChecked = true;
@@ -145,12 +144,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         {
             get { return _copies; }
             set { _copies = CheckIsNoZero(Convert.ToInt16(value)); OnPropertyChanged(nameof(Copies)); }
-        }
-        public bool CanPrint
-        {
-            get { return _canPrint; }
-            set { _canPrint = CheckCanPrint(value); }
-        }
+        }      
         public bool CheckBoxIsChecked
         {
             get { return _checkBoxIsChecked; }
@@ -268,16 +262,16 @@ namespace LabelMakerWPF_Plain.ViewModels
         private void Print(object obj)
         {            
             Validate();
-            if (_canPrint)
+            if (!_error)
             {
                 AddToPrint();
-                _printed = true;
-                _error = false;
+                _printed = true;              
             }
             else
             {
                 MessagesModel message = new MessagesModel();
                 message.QuantityError();
+                _error = false;
             }
         }
 
@@ -298,9 +292,6 @@ namespace LabelMakerWPF_Plain.ViewModels
                     string result = vm.Validation(_validationDictionary, columnName);
                     if(string.IsNullOrEmpty(result))
                     {     
-                        //CanPrint property has autocheck which wouldn't allow to set true if _error is true
-
-                        CanPrint = true;                       
                         return result;
                     }
                     else

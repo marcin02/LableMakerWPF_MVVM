@@ -14,6 +14,8 @@ namespace LabelMakerWPF_Plain.StartUp
             restriction.CheckRestriction();
             FirstRun firstRun = new FirstRun();
             firstRun.OnFirstRun();
+         //   CheckForUpdates updates = new CheckForUpdates();
+          //  updates.Check();
         }
     }
 }

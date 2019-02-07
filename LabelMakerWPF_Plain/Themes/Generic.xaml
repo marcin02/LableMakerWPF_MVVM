@@ -12,6 +12,7 @@
         <Setter Property="Padding" Value="0,-2,0,0"/>
         <Setter Property="Content" Value="˄"/>
     </Style>
+    
     <Style x:Key="NumericButtonDown" TargetType="RepeatButton"  BasedOn="{StaticResource NumericButtonUp}">
         <Setter Property="Content" Value="˅"/>
     </Style>

@@ -157,6 +157,7 @@ namespace LabelMakerWPF_Plain.Print
             y += bodyHeight;
 
             float yy = y;
+            float lableNumberStartY = yy;
 
             for (int i = 0; i < 6; i++)
             {
@@ -187,7 +188,7 @@ namespace LabelMakerWPF_Plain.Print
                 float posX = -1f;
                 float posY = 0;
                 float lableNumberStartX = x_2;
-                float lableNumberStartY = yy;
+                
 
                 //Checking if string fit on a lable and changing until it does
                 while (posX < 0)
@@ -204,7 +205,5 @@ namespace LabelMakerWPF_Plain.Print
         }
 
         #endregion
-
-
     }
 }

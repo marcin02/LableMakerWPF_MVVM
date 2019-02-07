@@ -3,7 +3,8 @@ using LabelMakerWPF_Plain.PrinterSettings;
 using LabelMakerWPF_Plain.Properties;
 using LabelMakerWPF_Plain.StartUp;
 using LabelMakerWPF_Plain.Tools;
-
+using System.Diagnostics;
+using System.Reflection;
 
 namespace LabelMakerWPF_Plain.ViewModels
 {
@@ -15,6 +16,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         {
             OnStartUp onStartUp = new OnStartUp();
             onStartUp.RunOnStartUp();
+            GetAssemblyVersion();
             ShowBoxCommand = new RelayCommand(ShowBox);
             ShowSettingsCommand = new RelayCommand(ShowSettings);
             ShowBigBoxCommand = new RelayCommand(ShowBigBox);
@@ -47,6 +49,9 @@ namespace LabelMakerWPF_Plain.ViewModels
         private bool _certificationNominateBtnCheck;
         private bool _certificationLvlBtnCheck;
         private bool _customBtnCheck;
+        private string _title;
+
+        
 
         #endregion
 
@@ -105,20 +110,16 @@ namespace LabelMakerWPF_Plain.ViewModels
                 OnPropertyChanged(nameof(SelectedViewModel));
             }
         }
+        public string Title
+        {
+            get { return _title; }
+            set { _title = value; OnPropertyChanged(nameof(Title)); }
+        }
 
         #endregion
 
         #region Methods
 
-        private void UpdateMenu()
-        {
-            SmallBoxBtnCheck = true;
-            BigBoxBtnCheck = true;
-            CertificationNominateBtnCheck = true;
-            CertificationLvlBtnCheck = true;
-            CustomBtnCheck = true;
-            HeaderLable = "Update";
-        }
 
         private bool Box(bool value)
         {
@@ -127,26 +128,6 @@ namespace LabelMakerWPF_Plain.ViewModels
                 CertificationBtnCheck = false;
             }
 
-            return value;
-        }
-
-        private bool SmallBox(bool value)
-        {
-            if (_selectedViewModel != null)
-            {
-                if (_selectedViewModel.ViewModelName == "BoxViewModel")
-                {
-                    value = true;
-                    return value;
-                }
-                else
-                {
-                    value = false;
-                    return value;
-                } 
-            }
-
-            value = false;
             return value;
         }
 
@@ -242,6 +223,14 @@ namespace LabelMakerWPF_Plain.ViewModels
                 return value;
         }        
 
+        private void GetAssemblyVersion()
+        {
+            Assembly assembly = Assembly.GetExecutingAssembly();
+            FileVersionInfo fileVersionInfo = FileVersionInfo.GetVersionInfo(assembly.Location);
+
+            Title = $"Edytor etykiet by Marcin Wiliński v.{fileVersionInfo.FileVersion}";
+        }
+
         private string SetHeaderLable(string value)
         {
             if(_selectedViewModel.ViewModelName == "BoxViewModel" || _selectedViewModel.ViewModelName == "BigBoxViewModel")
@@ -293,6 +282,36 @@ namespace LabelMakerWPF_Plain.ViewModels
         private void ShowSettings(object obj)
         {
             PSettings ps = new PSettings();
+        }
+
+        private bool SmallBox(bool value)
+        {
+            if (_selectedViewModel != null)
+            {
+                if (_selectedViewModel.ViewModelName == "BoxViewModel")
+                {
+                    value = true;
+                    return value;
+                }
+                else
+                {
+                    value = false;
+                    return value;
+                } 
+            }
+
+            value = false;
+            return value;
+        }
+
+        private void UpdateMenu()
+        {
+            SmallBoxBtnCheck = true;
+            BigBoxBtnCheck = true;
+            CertificationNominateBtnCheck = true;
+            CertificationLvlBtnCheck = true;
+            CustomBtnCheck = true;
+            HeaderLable = "Update";
         }
 
         #endregion

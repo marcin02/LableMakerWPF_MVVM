@@ -18,8 +18,7 @@ namespace LabelMakerWPF_Plain.StartUp
                 SetPaperSize setPaperSize = new SetPaperSize();
                 MessagesModel messages = new MessagesModel();
                 messages.FirstRunInfo();
-                Settings.Default.FirstRun = false;
-                Settings.Default.Save(); 
+                PSettings settings = new PSettings();                
             }
         }
     }

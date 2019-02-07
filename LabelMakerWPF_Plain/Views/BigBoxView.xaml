@@ -55,15 +55,15 @@
                     <TextBlock  Text="Kod pocztowy:"/>
                     <TextBox Width="45" MaxLength="6" Text="{Binding ZipCode, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="6"/>
                     <TextBlock Text="Miejscowość:"/>
-                    <TextBox MaxLength="25" Text="{Binding City, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="7"/>
+                    <TextBox MaxLength="25" Text="{Binding City, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="7"/>
                 </DockPanel>
                 <TextBlock Grid.Column="1" Grid.Row="7" Text="Nr paczki:"/>
 
-                <TextBox Grid.Column="2" Grid.Row="1" x:Name="CompanyTxt" MaxLength="27" Text="{Binding Company, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="1" />
-                <TextBox Grid.Column="2" Grid.Row="2" x:Name="OrderTxt" MaxLength="25" Text="{Binding Order}" TabIndex="2" />
-                <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding ContactPerson, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="3"/>
+                <TextBox Grid.Column="2" Grid.Row="1" x:Name="CompanyTxt" MaxLength="27" Text="{Binding Company, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="1" />
+                <TextBox Grid.Column="2" Grid.Row="2" x:Name="OrderTxt" MaxLength="25" Text="{Binding Order, Mode=TwoWay}" TabIndex="2" />
+                <TextBox Grid.Column="2" Grid.Row="3" Text="{Binding ContactPerson, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="3"/>
                 <TextBox Grid.Column="2" Grid.Row="4" MaxLength="12" Text="{Binding PhoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="4"/>
-                <TextBox Grid.Column="2" Grid.Row="5" MaxLength="25" Text="{Binding Street, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="5"/>
+                <TextBox Grid.Column="2" Grid.Row="5" MaxLength="25" Text="{Binding Street, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="5"/>
                 <DockPanel Grid.Column="2" Grid.Row="7" LastChildFill="False">
                     <Controls:NumericUpDown x:Name="box_0" Value="{Binding Box_0, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="8" Focusable="False"/>
                     <TextBlock VerticalAlignment="Center" Margin="5,0,5,0"  Text="z"/>

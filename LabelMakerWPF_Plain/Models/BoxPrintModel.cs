@@ -1,9 +1,9 @@
-﻿using LabelMakerWPF_Plain.Interfaces;
+﻿
 using System.Collections.Generic;
 
 namespace LabelMakerWPF_Plain.Models
 {
-    public class BoxPrintModel : IBoxPrintModel
+    public class BoxPrintModel
     {
         public string Company { get; set; }
         public string Order { get; set; }

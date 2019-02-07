@@ -10,7 +10,7 @@ namespace LabelMakerWPF_Plain.PrinterSettings
     {
         public PSettings()
         {
-            LoadSettings();
+            if(Settings.Default.FirstRun!=true)LoadSettings();
             PrintDialog();
         }
 
@@ -20,7 +20,7 @@ namespace LabelMakerWPF_Plain.PrinterSettings
         private void LoadSettings()
         {
             PrinterSettingsModel settings  = new PrinterSettingsModel();
-            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(Settings.Default.printerSettings);
         }
 
         private void PrintDialog()
@@ -31,8 +31,13 @@ namespace LabelMakerWPF_Plain.PrinterSettings
             {
                 printDocument.PrinterSettings = printDialog.PrinterSettings;
                 Settings.Default.printerSettings = SettingToString(printDocument.PrinterSettings);
+                if (Settings.Default.FirstRun == true) Settings.Default.FirstRun = false;
                 Settings.Default.Save();
             }
+            else if (Settings.Default.FirstRun == true && result != DialogResult.OK)
+            {
+                System.Windows.Application.Current.Shutdown();
+            }         
         }
     }
 }

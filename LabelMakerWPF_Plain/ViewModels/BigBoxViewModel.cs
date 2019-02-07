@@ -29,7 +29,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         private string _phoneNumber;
         private string _street;
         private string _zipCode;
-        private bool _error = true;
+        private bool _error = false;
         private bool _canValidate = false;
         private string _company;
         private string _order;
@@ -50,7 +50,6 @@ namespace LabelMakerWPF_Plain.ViewModels
         private short _copies = 1;
         private bool _checkBoxIsChecked = true;
         private bool _printed = false;
-        private bool _canPrint = false;
 
         #endregion
 
@@ -59,13 +58,13 @@ namespace LabelMakerWPF_Plain.ViewModels
         public string City
         {
             get { return _city; }
-            set { _city = value; }
+            set { _city = value; OnPropertyChanged(nameof(City)); }
         }
 
         public string ContactPerson
         {
             get { return _contactPerson; }
-            set { _contactPerson = value; }
+            set { _contactPerson = value; OnPropertyChanged(nameof(ContactPerson)); }
         }
 
         public string PhoneNumber
@@ -83,7 +82,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         public string Street 
         {
             get { return _street; }
-            set { _street = value; }
+            set { _street = value; OnPropertyChanged(nameof(Street)); }
         }
                 
         public string Company
@@ -206,12 +205,6 @@ namespace LabelMakerWPF_Plain.ViewModels
             set { _checkBoxIsChecked = value; }
         }
 
-        public bool CanPrint
-        {
-            get { return _canPrint; }
-            set { _canPrint = CheckCanPrint(value); }
-        }
-
         public string Error { get { return null; } }
 
         #endregion
@@ -313,6 +306,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         private void Clear(object obj)
         {
             Company = default(string);
+            Order = default(string);
             City = default(string);
             ContactPerson = default(string);
             PhoneNumber = "";
@@ -410,12 +404,12 @@ namespace LabelMakerWPF_Plain.ViewModels
             {
                 AddToPrint();
                 _printed = true;
-                _error = true;
             }
             else
             {
                 MessagesModel messages = new MessagesModel();
                 messages.QuantityError();
+                _error = false;
             }
         }
         private void RefreshProperty()
@@ -468,7 +462,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resultNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         case "ContactPerson":
@@ -477,7 +471,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resultNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         case "PhoneNumber":
@@ -486,7 +480,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resultNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         case "Street":
@@ -495,7 +489,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resultNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         case "ZipCode":
@@ -504,7 +498,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resultNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         default:
@@ -516,9 +510,6 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 string result = vm.Validation(_validationDictionary, columnName);
                                 if (string.IsNullOrEmpty(result))
                                 {
-                                    //CanPrint property has autocheck which wouldn't allow to set true if _error is true
-
-                                    CanPrint = true;
                                     return result;
                                 }                               
                                     _error = true;

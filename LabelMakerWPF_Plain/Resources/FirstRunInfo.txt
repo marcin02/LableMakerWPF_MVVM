@@ -1,13 +1,12 @@
-﻿Aplikacja została uruchomiona po raz pierwszy
-Przeczytaj proszę poniższą instrukcję:
+﻿Aplikacja została uruchomiona po raz pierwszy.
+Następnym krokiem będzie wybór właściwej
+drukarki oraz zmiana właściwości:
 
--Wejdź w ustawienia i wybierz właściwą drukarkę.
--Następnie we właściwościach zmień:
-
-	*Zaczernienie (maksymalna wartość)
-	*Prędkość (średnia wartość)
+         -Zaczernienie (maksymalna wartość)
+         -Prędkość (średnia wartość)
 
 Wielkość papieru została już określona więc zmiana 
 wartości w ustawieniach nic nie da. Zmiana pozycji
-papieru o 180 stopni może spowodować złe ustawianie
-marginesów. Zalecam nie zmienianie domyślnego ustawienia.
+papieru o 180 stopni może spowodować złą kalkulację
+marginesów. Zalecam pozostawienie domyślnego 
+ustawienia.

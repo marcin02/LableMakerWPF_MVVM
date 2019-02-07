@@ -27,7 +27,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         private int _maxWeight;
         private string _name;
         private int _selfWeight;
-        private bool _error = true;
+        private bool _error = false;
         private bool _canValidate = false;
 
         #endregion
@@ -143,12 +143,12 @@ namespace LabelMakerWPF_Plain.ViewModels
             if(!_error)
             {
                 AddToPrint();
-                _error = true;
             }
             else
             {
                 MessagesModel messages = new MessagesModel();
                 messages.QuantityError();
+                _error = false;
             }
         }
         private void RefreshPropeties()
@@ -181,7 +181,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resulNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         case "SelfWeight":
@@ -190,7 +190,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resulNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         case "MaxWeight":
@@ -200,7 +200,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resulNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
 
                         case "Name":
@@ -209,7 +209,7 @@ namespace LabelMakerWPF_Plain.ViewModels
                                 _error = true;
                                 return resulNOK;
                             }
-                            _error = false;
+                            
                             return resultOK;
                     } 
                 }

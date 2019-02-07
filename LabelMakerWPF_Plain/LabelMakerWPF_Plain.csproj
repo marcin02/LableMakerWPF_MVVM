@@ -127,16 +127,12 @@
     </Compile>
     <Compile Include="Controls\NumericUpDown.cs" />
     <Compile Include="Converters\BoolToBoolConverter.cs" />
-    <Compile Include="Interfaces\ICertificationDrawInfoModel.cs" />
-    <Compile Include="Interfaces\IBoxDrawInfoModel.cs" />
-    <Compile Include="Interfaces\IBoxPrintModel.cs" />
     <Compile Include="Models\BigBoxPrintModel.cs" />
     <Compile Include="Models\BoxPrintModel.cs" />
     <Compile Include="Models\BoxValidationModel.cs" />
     <Compile Include="Models\CertificationLevelPrintModel.cs" />
     <Compile Include="Models\CertificationNominatePrintModel.cs" />
     <Compile Include="Models\CustomPrintModel.cs" />
-    <Compile Include="Interfaces\IDrawInfoModel.cs" />
     <Compile Include="Models\MessagesModel.cs" />
     <Compile Include="Models\DrawInfoModel.cs" />
     <Compile Include="Converters\ConvertSettings.cs" />
