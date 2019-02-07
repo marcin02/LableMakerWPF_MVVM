@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace LabelMakerWPF_Plain.Models
+﻿namespace LabelMakerWPF_Plain.Models
 {
     public class CertificationNominatePrintModel
     {

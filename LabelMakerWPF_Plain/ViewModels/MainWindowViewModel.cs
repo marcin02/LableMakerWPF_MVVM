@@ -1,12 +1,8 @@
 ﻿using LabelMakerWPF_Plain.Models;
 using LabelMakerWPF_Plain.PrinterSettings;
+using LabelMakerWPF_Plain.Properties;
+using LabelMakerWPF_Plain.StartUp;
 using LabelMakerWPF_Plain.Tools;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 
 namespace LabelMakerWPF_Plain.ViewModels
@@ -17,7 +13,8 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         public MainWindowViewModel()
         {
-            SetPaperSize setPaperSize = new SetPaperSize();
+            OnStartUp onStartUp = new OnStartUp();
+            onStartUp.RunOnStartUp();
             ShowBoxCommand = new RelayCommand(ShowBox);
             ShowSettingsCommand = new RelayCommand(ShowSettings);
             ShowBigBoxCommand = new RelayCommand(ShowBigBox);
@@ -242,7 +239,7 @@ namespace LabelMakerWPF_Plain.ViewModels
 
                 value = false;
                 return value;
-        }
+        }        
 
         private void ShowBox(object obj)
         {

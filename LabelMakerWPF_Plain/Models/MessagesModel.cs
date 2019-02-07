@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
 namespace LabelMakerWPF_Plain.Models
 {
@@ -29,6 +24,19 @@ namespace LabelMakerWPF_Plain.Models
         public void TextBoxError()
         {
             MessageBox.Show("Pole tekstowe nie może być puste", Error, MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+        public void FirstRunInfo()
+        {
+            string info = Properties.Resources.FirstRunInfo;            
+
+            MessageBox.Show(info, "Pierwsze uruchomienie - instrukcja", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        public void TrialTimeUp()
+        {
+            string info = "Czas użytkowania dobiegł końca.";
+            MessageBox.Show(info,"Trial", MessageBoxButtons.OK, MessageBoxIcon.Stop);
         }
     }
 }

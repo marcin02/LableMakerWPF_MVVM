@@ -49,10 +49,10 @@ namespace LabelMakerWPF_Plain.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
-        public string FirstRun {
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool FirstRun {
             get {
-                return ((string)(this["FirstRun"]));
+                return ((bool)(this["FirstRun"]));
             }
             set {
                 this["FirstRun"] = value;

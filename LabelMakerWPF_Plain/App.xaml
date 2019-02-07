@@ -104,5 +104,9 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="SelectAll" TargetType="TextBox">
+            <EventSetter Event="GotFocus" Handler="TextBox_GotFocus"/>
+        </Style>
     </Application.Resources>
 </Application>

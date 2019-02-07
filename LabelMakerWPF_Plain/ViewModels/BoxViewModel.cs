@@ -24,26 +24,26 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         #region Private properties
 
-        protected string _company;
-        protected string _order;
-        protected int _box_0 = 1;
-        protected int _box_1 = 1;
-        protected string _item_0;
-        protected string _item_1;
-        protected string _item_2;
-        protected string _item_3;
-        protected string _item_4;
-        protected string _item_5;
-        protected int _qnt_0 = 0;
-        protected int _qnt_1 = 0;
-        protected int _qnt_2 = 0;
-        protected int _qnt_3 = 0;
-        protected int _qnt_4 = 0;
-        protected int _qnt_5 = 0;
-        protected Int16 _copies = 1;
-        protected bool _canPrint = false;
-        protected bool _canValidate = false;
-        protected bool _error = false;
+        private string _company;
+        private string _order;
+        private int _box_0 = 1;
+        private int _box_1 = 1;
+        private string _item_0;
+        private string _item_1;
+        private string _item_2;
+        private string _item_3;
+        private string _item_4;
+        private string _item_5;
+        private int _qnt_0 = 0;
+        private int _qnt_1 = 0;
+        private int _qnt_2 = 0;
+        private int _qnt_3 = 0;
+        private int _qnt_4 = 0;
+        private int _qnt_5 = 0;
+        private short _copies = 1;
+        private bool _canPrint = false;
+        private bool _canValidate = false;
+        private bool _error = false;
         private bool _checkBoxIsChecked = true;
         private bool _printed = false;
 
@@ -162,8 +162,8 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         #region Collections
 
-        protected List<string> _items;
-        protected List<int> _quantity;
+        private List<string> _items;
+        private List<int> _quantity;
         private Dictionary<string, BoxValidationModel> _validationDictionary;
 
         #endregion
@@ -266,8 +266,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         }
         
         private void Print(object obj)
-        {
-            
+        {            
             Validate();
             if (_canPrint)
             {
@@ -280,7 +279,6 @@ namespace LabelMakerWPF_Plain.ViewModels
                 MessagesModel message = new MessagesModel();
                 message.QuantityError();
             }
-            
         }
 
         //Validate UI
@@ -338,7 +336,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             return value;
         }
 
-        private Int16 CheckIsNoZero(Int16 value)
+        private short CheckIsNoZero(short value)
         {
             if (value >= 1)
             {
@@ -365,7 +363,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             };
         }
 
-        protected void FillList()
+        private void FillList()
         {
             _items = new List<string>();
             _quantity = new List<int>();
@@ -404,7 +402,6 @@ namespace LabelMakerWPF_Plain.ViewModels
             FillDictionary();
             RefreshProperty();
             _canValidate = false;
-            _error = false;
         }
 
         #endregion

@@ -1,6 +1,5 @@
 ﻿using LabelMakerWPF_Plain.Converters;
 using LabelMakerWPF_Plain.Models;
-using LabelMakerWPF_Plain.Properties;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;

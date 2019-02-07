@@ -1,6 +1,4 @@
-﻿using LabelMakerWPF_Plain.Properties;
-using System;
-using System.Drawing.Printing;
+﻿using System;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 

@@ -19,7 +19,7 @@ namespace LabelMakerWPF_Plain.Models
             header = new Font("Verdana", 14, FontStyle.Bold);
             header2 = new Font("Arial", 12);
             body = new Font("Arial", 11);
-            bigLableBody = new Font("Arial", 9);
+            bigLableBody = new Font("Arial", 9, FontStyle.Bold);
             box = new Font("Arial", 26);
             p = new Pen(Color.Black);
         }

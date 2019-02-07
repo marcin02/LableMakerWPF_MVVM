@@ -34,6 +34,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\print-icon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -91,7 +94,6 @@
     </Compile>
     <Compile Include="Controls\NumericUpDown.cs" />
     <Compile Include="Converters\BoolToBoolConverter.cs" />
-    <Compile Include="Converters\StringLenghtToPixels.cs" />
     <Compile Include="Interfaces\ICertificationDrawInfoModel.cs" />
     <Compile Include="Interfaces\IBoxDrawInfoModel.cs" />
     <Compile Include="Interfaces\IBoxPrintModel.cs" />
@@ -120,6 +122,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="StartUp\FirstRun.cs" />
+    <Compile Include="StartUp\OnStartUp.cs" />
+    <Compile Include="StartUp\Restriction.cs" />
     <Compile Include="Tools\ObservableObject.cs" />
     <Compile Include="Tools\RelayCommand.cs" />
     <Compile Include="Validation\BoxValidation.cs" />
@@ -200,6 +205,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\vertical_align_center_black_24x24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\FirstRunInfo.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\print-icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

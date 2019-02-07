@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Data;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls.Primitives;
@@ -54,6 +50,11 @@ namespace LabelMakerWPF_Plain
             {
                 EnterAnimation(sender);
             }
+        }
+
+        private void TextBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ((TextBox)sender).SelectAll();
         }
 
         #endregion

@@ -1,14 +1,9 @@
 ﻿using LabelMakerWPF_Plain.Converters;
-using LabelMakerWPF_Plain.Interfaces;
 using LabelMakerWPF_Plain.Models;
-using LabelMakerWPF_Plain.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LabelMakerWPF_Plain.Print
 {

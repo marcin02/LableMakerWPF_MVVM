@@ -1,5 +1,4 @@
 ﻿using LabelMakerWPF_Plain.Interfaces;
-using System;
 using System.Collections.Generic;
 
 namespace LabelMakerWPF_Plain.Models
@@ -12,6 +11,6 @@ namespace LabelMakerWPF_Plain.Models
         public int Box1 { get; set; }
         public List<string> Items { get; set; }
         public List<int> Quantity { get; set; }
-        public Int16 Copies { get; set; }
+        public short Copies { get; set; }
     }
 }

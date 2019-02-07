@@ -1,22 +1,13 @@
 ﻿using LabelMakerWPF_Plain.Converters;
 using LabelMakerWPF_Plain.Models;
 using LabelMakerWPF_Plain.Print;
-using LabelMakerWPF_Plain.Properties;
 using LabelMakerWPF_Plain.Tools;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Drawing;
 using System.Drawing.Text;
 using System.IO;
-using System.Linq;
 using System.Media;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Windows.Controls;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
 
 namespace LabelMakerWPF_Plain.ViewModels
 {
@@ -146,7 +137,7 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         private void AddToPrint()
         {
-            StringLenghtToPixels convert = new StringLenghtToPixels();
+            
             CustomPrintModel model = new CustomPrintModel
             {
                 Text = this._text,

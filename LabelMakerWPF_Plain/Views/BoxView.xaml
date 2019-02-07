@@ -9,7 +9,7 @@
              d:DesignHeight="425" d:DesignWidth="350" Margin="20,10,20,0" FontSize="11">
     
     <UserControl.Resources>
-        <Style TargetType="TextBox">
+        <Style TargetType="TextBox" BasedOn="{StaticResource SelectAll}">
             <Setter Property="Margin" Value="0,0,10,5"/>
             <Setter Property="Height" Value="20"/>
             <Style.Triggers>
