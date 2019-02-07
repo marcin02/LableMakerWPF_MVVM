@@ -92,18 +92,18 @@ namespace LabelMakerWPF_Plain.Properties {
         
         /// <summary>
         ///   Looks up a localized string similar to Aplikacja została uruchomiona po raz pierwszy
-        ///Przeczytaj proszę poniższš instrukcję:
+        ///Przeczytaj proszę poniższą instrukcję:
         ///
-        ///-Wejdz w ustawienia i wybierz właciwš drukarkę.
-        ///-Następnie we właciwociach zmień:
+        ///-Wejdź w ustawienia i wybierz właściwą drukarkę.
+        ///-Następnie we właściwościach zmień:
         ///
-        ///	*Zaczernienie (maksymalna wartoć)
-        ///	*Prędkoć (rednia wartoć)
+        ///	*Zaczernienie (maksymalna wartość)
+        ///	*Prędkość (średnia wartość)
         ///
-        ///Wielkoć papieru została już okrelona więc zmiana 
-        ///wartoci w ustawieniach nic nie da. Zmiana pozycji
+        ///Wielkość papieru została już określona więc zmiana 
+        ///wartości w ustawieniach nic nie da. Zmiana pozycji
         ///papieru o 180 stopni może spowodować złe ustawianie
-        ///marginesów. Zalecam nie zmienianie domylnego ustawienia..
+        ///marginesów. Zalecam nie zmienianie domyślnego ustawienia..
         /// </summary>
         internal static string FirstRunInfo {
             get {
@@ -127,6 +127,16 @@ namespace LabelMakerWPF_Plain.Properties {
         internal static System.Drawing.Bitmap icons8_services_512 {
             get {
                 object obj = ResourceManager.GetObject("icons8_services_512", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap information {
+            get {
+                object obj = ResourceManager.GetObject("information", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

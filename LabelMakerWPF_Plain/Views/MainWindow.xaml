@@ -45,16 +45,16 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="1" Grid.Row="0" Background="RoyalBlue" >
-            <TextBlock FontFamily="CenturyGothic" FontSize="17" FontWeight="ExtraLight" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
+            <TextBlock Text="{Binding HeaderLable}" FontFamily="CenturyGothic" FontSize="17" FontWeight="ExtraLight" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White"/>
             <Button Command="{Binding ShowSettingsCommand}" ToolTip="Ustawienia drukarki" BorderThickness="0" Background="RoyalBlue" Width="35" Height="35" HorizontalAlignment="Right" IsTabStop="False">
                 <Button.Content>
-                    <Image Source="/LabelMakerWPF_Plain;component/Resources/icons8-services-512.png" Width="32" Height="32"/>
+                    <Image Source="/Edytor etykiet;component/Resources/icons8-services-512.png" Width="32" Height="32"/>
                 </Button.Content>
             </Button>
         </Grid>
 
         <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Background="{StaticResource SideMenuColor}" LastChildFill="False">
-            <Image Height="35" DockPanel.Dock="Top" Source="/LabelMakerWPF_Plain;component/Resources/flexlean - logo.png" />
+            <Image Height="35" DockPanel.Dock="Top" Source="/Edytor etykiet;component/Resources/flexlean - logo.png" />
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="8"/>

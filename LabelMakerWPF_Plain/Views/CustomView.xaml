@@ -96,34 +96,34 @@
                 
                 <Button x:Name="LeftAligment" Style="{StaticResource LeftAlignmentBorder}" Command="{Binding HorizontalAlignmentCommand}" CommandParameter="Left" Margin="3,0,0,0">
                     <Button.Content>
-                        <Image  Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16"  Source="/LabelMakerWPF_Plain;component/Resources/left-alignment.png"/>
+                        <Image  Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16"  Source="/Edytor etykiet;component/Resources/left-alignment.png"/>
                     </Button.Content>
                 </Button>
                 <Button x:Name="CenterAligment" Style="{StaticResource CenterAlignmentBorder}" Command="{Binding HorizontalAlignmentCommand}" CommandParameter="Center" Margin="3,0,0,0">
                     <Button.Content>
-                        <Image  Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16" Source="/LabelMakerWPF_Plain;component/Resources/center-alighment.png"/>
+                        <Image  Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16" Source="/Edytor etykiet;component/Resources/center-alighment.png"/>
                 </Button.Content>
                 </Button>
                 <Button x:Name="RightAligment" Style="{StaticResource RightAlignmentBorder}" Command="{Binding HorizontalAlignmentCommand}" CommandParameter="Right" Margin="3,0,2,0">
                     <Button.Content>
-                        <Image Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16"  Source="/LabelMakerWPF_Plain;component/Resources/right-text-alignment (1).png" />
+                        <Image Stretch="Fill" SnapsToDevicePixels="True" Width="16" Height="16"  Source="/Edytor etykiet;component/Resources/right-text-alignment (1).png" />
                     </Button.Content>
                 </Button>
                 <ToggleButton Style="{StaticResource VerticalAlignmentBorder}" Command="{Binding VerticalAlignmentCommand}">
                     <ToggleButton.Content>
-                        <Image Width="16" Height="16" Source="/LabelMakerWPF_Plain;component/Resources/vertical_align_center_black_24x24.png"/>
+                        <Image Width="16" Height="16" Source="/Edytor etykiet;component/Resources/vertical_align_center_black_24x24.png"/>
                     </ToggleButton.Content>
                 </ToggleButton>
                 <Border Width="1" Margin="2" Background="#8888"/>
 
                 <ToggleButton x:Name="BoldFontStyle" Command="{Binding FontWeightCommand}" Margin="3,0,0,0" Style="{StaticResource WeightStyleButton}">
                     <ToggleButton.Content>
-                            <Image  Stretch="Fill"  Width="13" Height="13" Source="/LabelMakerWPF_Plain;component/Resources/bold-text-option.png"/>
+                            <Image  Stretch="Fill"  Width="13" Height="13" Source="/Edytor etykiet;component/Resources/bold-text-option.png"/>
                         </ToggleButton.Content>
                 </ToggleButton>
                 <ToggleButton Margin="3,0,3,0" x:Name="ItalicFontStyle" Command="{Binding FontStyleCommand}" Style="{StaticResource WeightStyleButton}">
                     <ToggleButton.Content>
-                            <Image Stretch="Fill" Width="13"  Height="13" Source="/LabelMakerWPF_Plain;component/Resources/italicize-text.png"/>
+                            <Image Stretch="Fill" Width="13"  Height="13" Source="/Edytor etykiet;component/Resources/italicize-text.png"/>
                         </ToggleButton.Content>
                 </ToggleButton>
                 <ComboBox x:Name="PaperSize" 

@@ -91,7 +91,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         {
             get { return _headerLable; }
             set {
-                _headerLable = value;
+                _headerLable = SetHeaderLable(value);
                 OnPropertyChanged(nameof(HeaderLable));
             }
         }
@@ -117,6 +117,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             CertificationNominateBtnCheck = true;
             CertificationLvlBtnCheck = true;
             CustomBtnCheck = true;
+            HeaderLable = "Update";
         }
 
         private bool Box(bool value)
@@ -240,6 +241,29 @@ namespace LabelMakerWPF_Plain.ViewModels
                 value = false;
                 return value;
         }        
+
+        private string SetHeaderLable(string value)
+        {
+            if(_selectedViewModel.ViewModelName == "BoxViewModel" || _selectedViewModel.ViewModelName == "BigBoxViewModel")
+            {
+                value = "Na paczkę";
+                return value;
+            }
+            else if (_selectedViewModel.ViewModelName == "CertificationNominateViewModel" || _selectedViewModel.ViewModelName == "CertificationLvlViewModel")
+            {
+                value = "Certyfikacja";
+                return value;
+            }
+            else if (_selectedViewModel.ViewModelName == "CustomViewModel")
+            {
+                value = "Własna";
+                return value;
+            }
+
+            value = _headerLable;
+
+            return value;
+        }
 
         private void ShowBox(object obj)
         {
