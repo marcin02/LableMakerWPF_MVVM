@@ -217,7 +217,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             MessagesModel message = new MessagesModel();
             if (_printed == false) message.PrintError();
             else if(Box_0+1 > Box_1) message.BoxError();
-            else if (_printed == true && Box_0++ <= Box_1)
+            else if (_printed == true && Box_0+1 <= Box_1)
             {
                 NextHelper();
             } 

@@ -65,9 +65,9 @@
                 <TextBox Grid.Column="2" Grid.Row="4" MaxLength="12" Text="{Binding PhoneNumber, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="4"/>
                 <TextBox Grid.Column="2" Grid.Row="5" MaxLength="25" Text="{Binding Street, Mode=TwoWay, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="5"/>
                 <DockPanel Grid.Column="2" Grid.Row="7" LastChildFill="False">
-                    <Controls:NumericUpDown x:Name="box_0" Value="{Binding Box_0, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="8" Focusable="False"/>
+                    <Controls:NumericUpDown x:Name="box_0" Value="{Binding Box_0, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="8" Focusable="False"/>
                     <TextBlock VerticalAlignment="Center" Margin="5,0,5,0"  Text="z"/>
-                    <Controls:NumericUpDown x:Name="box_1" Value="{Binding Box_1, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="9" Focusable="False"/>
+                    <Controls:NumericUpDown x:Name="box_1" Value="{Binding Box_1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="9" Focusable="False"/>
                     <CheckBox x:Name="BoxCheck" Margin="5,0,0,0" VerticalAlignment="Center" HorizontalAlignment="Center" IsChecked="{Binding CheckBoxIsChecked, UpdateSourceTrigger=PropertyChanged}" IsTabStop="False"/>
                 </DockPanel>
             </Grid>
