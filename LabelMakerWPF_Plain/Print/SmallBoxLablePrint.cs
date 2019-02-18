@@ -37,7 +37,7 @@ namespace LabelMakerWPF_Plain.Print
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["100x50"].PrintWidth, PaperSize["100x50"].PrintHeight);
-            printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
+ //           printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.PrinterSettings.Copies = model.Copies;
             printDocument.Print();
