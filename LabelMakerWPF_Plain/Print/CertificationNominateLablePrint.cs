@@ -39,7 +39,7 @@ namespace LabelMakerWPF_Plain.Print
         private string _maxWeight;
         
         private float x_1 = 140; // Second vertical line
-        private float x_2 = 300; // Whole width of a table
+        private float x_2 = 290; // Whole width of a table
         private float y_1 = 107.01236f; //Whole height of a table
         private float x;
         private float y;
@@ -52,7 +52,7 @@ namespace LabelMakerWPF_Plain.Print
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["80x50"].PrintWidth, PaperSize["80x50"].PrintHeight);
-            printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
+          //  printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.PrinterSettings.Copies = model.Copies;
             printDocument.Print();

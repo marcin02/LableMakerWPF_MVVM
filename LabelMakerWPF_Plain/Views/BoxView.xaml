@@ -46,7 +46,7 @@
                     <TextBlock Grid.Column="1" Grid.Row="2" Text="Nr zamówienia:"/>
                     <TextBlock Grid.Column="1" Grid.Row="3" Text="Nr paczki:"/>
 
-                    <TextBox Grid.Column="2" Grid.Row="1" x:Name="CompanyTxt" MaxLength="36" Text="{Binding Company, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="1"/>
+                    <TextBox Grid.Column="2" Grid.Row="1" x:Name="CompanyTxt" MaxLength="30" Text="{Binding Company, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}" TabIndex="1"/>
                     <TextBox Grid.Column="2" Grid.Row="2" x:Name="OrderTxt" MaxLength="30" Text="{Binding Order}" TabIndex="2" />
                 <DockPanel Grid.Column="2" Grid.Row="3" LastChildFill="False">
                     <Controls:NumericUpDown x:Name="box_0" Value="{Binding Box_0, Mode=TwoWay}" IsEnabled="{Binding ElementName=BoxCheck, Path=IsChecked}" TabIndex="3" Focusable="False"/>

@@ -36,7 +36,7 @@ namespace LabelMakerWPF_Plain.Print
             PrintDocument printDocument = new PrintDocument();
             printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
-            printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["100x50"].PrintWidth, PaperSize["100x50"].PrintHeight);
+            printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["80x50"].PrintWidth, PaperSize["80x50"].PrintHeight);
             printDocument.PrinterSettings.Copies = model.Copies;
             printDocument.Print();
         }
@@ -46,12 +46,18 @@ namespace LabelMakerWPF_Plain.Print
             Graphics graphics = e.Graphics;
             float headerHeight = drawModel.header.GetHeight();
             float bodyHeight = drawModel.body.GetHeight();
-            float x = 20;
-            float y = 80;
+            float x = 0;
+            float y = 0;
+
+            string LvlWeight = model.LvlWeight.ToString();
+
+            PointF posF = graphics.MeasureString(LvlWeight, drawModel.body).ToPointF();
+            x = (graphics.VisibleClipBounds.Width - (posF.X - x)) / 2;
+            y = (graphics.VisibleClipBounds.Height - (posF.Y - y)) / 2;
 
             graphics.DrawString("flexlean sp. z o.o.", drawModel.header, Brushes.Black, x, y);
             y += headerHeight;
-            graphics.DrawString($"Nośność poziomu: { model.LvlWeight } kg", drawModel.body, Brushes.Black, x, y + 2);
+            graphics.DrawString($"Nośność poziomu: { LvlWeight } kg", drawModel.body, Brushes.Black, x, y + 2);
         }
 
         #endregion
