@@ -42,7 +42,7 @@
                     <ControlTemplate TargetType="ToggleButton">
                         <Grid x:Name="Border" Background="{TemplateBinding Background}">
                             <DockPanel>
-                                <Rectangle x:Name="Rct" Margin="2,2,0,2" Height="41" Width="0" Fill="RoyalBlue" />
+                                <Rectangle x:Name="Rct" Margin="2,2,0,2" Height="41" Width="0" Fill="#E83C3C" />
                                 <ContentPresenter x:Name="ContentPresenter" 
                                                   Content="{TemplateBinding Content}" 
                                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 

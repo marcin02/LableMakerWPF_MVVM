@@ -159,12 +159,12 @@ namespace LabelMakerWPF_Plain
 
         private async void EnterCheckColorAnimation(object sender)
         {
-            await AnimateUIButton(sender, EnterDoubleAnimation(), EnterColorAnimation(), EnterColorAnimation("#E83C3C"));
+            await AnimateUIButton(sender, EnterDoubleAnimation(), EnterColorAnimation(), EnterColorAnimation("RoyalBlue"));
         }
 
         private async void ExitUncheckedColorAnimation(object sender)
         {
-            await AnimateUIButton(sender, ExitDoubleAnimation(), ExitColorAnimation(), ExitColorAnimation("RoyalBlue"));
+            await AnimateUIButton(sender, ExitDoubleAnimation(), ExitColorAnimation(), ExitColorAnimation("#E83C3C"));
         }
 
         #endregion
