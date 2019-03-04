@@ -12,8 +12,7 @@ namespace LabelMakerWPF_Plain.Print
 
         public CertificationNominateLablePrint(CertificationNominatePrintModel model)
         {
-            settings = new PrinterSettingsModel();
-            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(settings.PaperSize);
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(PrinterSettingsModel.PaperSize);
             this.model = model;
             _lvlWeight = $"{model.LvlWeight.ToString()} kg";
             _selfWeight = $"{model.SelfWeight.ToString()} kg";
@@ -27,7 +26,6 @@ namespace LabelMakerWPF_Plain.Print
 
         private CertificationNominatePrintModel model;
         private DrawInfoModel drawModel = new DrawInfoModel();
-        private PrinterSettingsModel settings;
         private Dictionary<string, PaperSizeModel> PaperSize;
 
         #endregion
@@ -43,6 +41,7 @@ namespace LabelMakerWPF_Plain.Print
         private float y_1 = 107.01236f; //Whole height of a table
         private float x;
         private float y;
+
         #endregion
 
         #region Methods
@@ -50,7 +49,7 @@ namespace LabelMakerWPF_Plain.Print
         private void InitialSettingsAndPrint()
         {
             PrintDocument printDocument = new PrintDocument();
-            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(PrinterSettingsModel.PrintSettings);
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["80x50"].PrintWidth, PaperSize["80x50"].PrintHeight);
           //  printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);

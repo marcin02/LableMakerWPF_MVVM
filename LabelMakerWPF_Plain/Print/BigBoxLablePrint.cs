@@ -13,9 +13,8 @@ namespace LabelMakerWPF_Plain.Print
 
         public BigBoxLablePrint(BigBoxPrintModel model)
         {
-            settings = new PrinterSettingsModel();
             this.model = model;
-            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(settings.PaperSize);
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(PrinterSettingsModel.PaperSize);
             InitialSettingsAndPrint();
         }
 
@@ -26,7 +25,6 @@ namespace LabelMakerWPF_Plain.Print
         private BigBoxPrintModel model;
         DrawInfoModel drawModel = new DrawInfoModel();
         Dictionary<string, PaperSizeModel> PaperSize;
-        PrinterSettingsModel settings;
 
         #endregion
 
@@ -35,9 +33,8 @@ namespace LabelMakerWPF_Plain.Print
         private void InitialSettingsAndPrint()
         {
             PrintDocument printDocument = new PrintDocument();
-            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(PrinterSettingsModel.PrintSettings);
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["100x100"].PrintWidth, PaperSize["100x100"].PrintHeight);
-       //     printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.PrinterSettings.Copies = model.Copies;
             printDocument.Print();
@@ -189,7 +186,7 @@ namespace LabelMakerWPF_Plain.Print
                     size--;
                     box = new Font(drawModel.box.FontFamily, size);
                     posF = graphics.MeasureString(lableNumber, box).ToPointF();
-                    posX = (140 - posF.X) / 2;
+                    posX = ((x_3-x_2) - posF.X) / 2;
                     posY = ((y-lableNumberStartY) - posF.Y) / 2;
                 }
 

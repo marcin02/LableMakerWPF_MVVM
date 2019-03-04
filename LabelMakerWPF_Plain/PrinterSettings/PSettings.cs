@@ -19,7 +19,6 @@ namespace LabelMakerWPF_Plain.PrinterSettings
 
         private void LoadSettings()
         {
-            PrinterSettingsModel settings  = new PrinterSettingsModel();
             printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(Settings.Default.printerSettings);
         }
 

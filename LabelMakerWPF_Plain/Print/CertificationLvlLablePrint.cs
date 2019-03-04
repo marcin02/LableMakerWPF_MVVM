@@ -12,8 +12,7 @@ namespace LabelMakerWPF_Plain.Print
 
         public CertificationLvlLablePrint(CertificationLevelPrintModel model)
         {
-            settings = new PrinterSettingsModel();
-            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(settings.PaperSize);
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(PrinterSettingsModel.PaperSize);
             this.model = model;
             InitialSettingsAndPrint();
         }
@@ -25,7 +24,6 @@ namespace LabelMakerWPF_Plain.Print
         CertificationLevelPrintModel model;
         DrawInfoModel drawModel = new DrawInfoModel();
         Dictionary<string, PaperSizeModel> PaperSize;
-        PrinterSettingsModel settings;
 
         #endregion
 
@@ -34,7 +32,7 @@ namespace LabelMakerWPF_Plain.Print
         private void InitialSettingsAndPrint()
         {
             PrintDocument printDocument = new PrintDocument();
-            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(PrinterSettingsModel.PrintSettings);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["80x50"].PrintWidth, PaperSize["80x50"].PrintHeight);
             printDocument.PrinterSettings.Copies = model.Copies;

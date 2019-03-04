@@ -55,27 +55,8 @@ namespace LabelMakerWPF_Plain.ViewModels
         private string _item_7;
         private string _item_8;
         private int _qnt_6;
-
-        public int Qnt_6
-        {
-            get { return _qnt_6; }
-            set { _qnt_6 = value; OnPropertyChanged(nameof(Qnt_6)); }
-        }
         private int _qnt_7;
-
-        public int Qnt_7
-        {
-            get { return _qnt_7; }
-            set { _qnt_7 = value; OnPropertyChanged(nameof(Qnt_7)); }
-        }
         private int _qnt_8;
-
-        public int Qnt_8
-        {
-            get { return _qnt_8; }
-            set { _qnt_8 = value; OnPropertyChanged(nameof(Qnt_8)); }
-        }
-
 
         #endregion
 
@@ -241,6 +222,24 @@ namespace LabelMakerWPF_Plain.ViewModels
         {
             get { return _qnt_5; }
             set { _qnt_5 = value; OnPropertyChanged(nameof(Qnt_5)); }
+        }
+
+        public int Qnt_6
+        {
+            get { return _qnt_6; }
+            set { _qnt_6 = value; OnPropertyChanged(nameof(Qnt_6)); }
+        }
+
+        public int Qnt_7
+        {
+            get { return _qnt_7; }
+            set { _qnt_7 = value; OnPropertyChanged(nameof(Qnt_7)); }
+        }
+
+        public int Qnt_8
+        {
+            get { return _qnt_8; }
+            set { _qnt_8 = value; OnPropertyChanged(nameof(Qnt_8)); }
         }
 
         public short Copies

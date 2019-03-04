@@ -136,8 +136,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         #region Methods
 
         private void AddToPrint()
-        {
-            
+        {            
             CustomPrintModel model = new CustomPrintModel
             {
                 Text = this._text,
@@ -190,8 +189,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         private void GetPaperSize()
         {
             ConvertSettings cs = new ConvertSettings();
-            PrinterSettingsModel settingsModel = new PrinterSettingsModel();
-            this.PaperSize = (Dictionary<string, PaperSizeModel>)cs.SettingFromString(settingsModel.PaperSize);
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)cs.SettingFromString(PrinterSettingsModel.PaperSize);
         }
 
         private void Print(object obj)

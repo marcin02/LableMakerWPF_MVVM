@@ -12,9 +12,8 @@ namespace LabelMakerWPF_Plain.Print
         #region Constructor
 
         public SmallBoxLablePrint(BoxPrintModel model)
-        {
-            settings = new PrinterSettingsModel();
-            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(settings.PaperSize);
+        { 
+            this.PaperSize = (Dictionary<string, PaperSizeModel>)SettingFromString(PrinterSettingsModel.PaperSize);
             this.model = model;
             InitialSettingsAndPrint();
         }
@@ -26,7 +25,6 @@ namespace LabelMakerWPF_Plain.Print
         BoxPrintModel model;
         DrawInfoModel drawModel = new DrawInfoModel();
         Dictionary<string, PaperSizeModel> PaperSize;
-        PrinterSettingsModel settings;
 
         #endregion
 
@@ -35,9 +33,8 @@ namespace LabelMakerWPF_Plain.Print
         private void InitialSettingsAndPrint()
         {
             PrintDocument printDocument = new PrintDocument();
-            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(settings.PrintSettings);
+            printDocument.PrinterSettings = (System.Drawing.Printing.PrinterSettings)SettingFromString(PrinterSettingsModel.PrintSettings);
             printDocument.DefaultPageSettings.PaperSize = new PaperSize("Custom", PaperSize["100x50"].PrintWidth, PaperSize["100x50"].PrintHeight);
- //           printDocument.DefaultPageSettings.Margins = new Margins(7, 7, 7, 7);
             printDocument.PrintPage += new PrintPageEventHandler(printDocument_PrintPage);
             printDocument.PrinterSettings.Copies = model.Copies;
             printDocument.Print();
@@ -53,6 +50,7 @@ namespace LabelMakerWPF_Plain.Print
             float x_2 = x + 227; // Third vertical line x position
             float x_3 = x + 367; // Last vertical line x position
             float y = 6;
+            float y_1; //Third horizontal line y position
             string date = DateTime.Now.ToShortDateString();
 
             graphics.DrawString("flexlean sp. z o.o.", drawModel.header, Brushes.Black, x, y);
@@ -76,6 +74,7 @@ namespace LabelMakerWPF_Plain.Print
             y += bodyHeight;
 
             float yy = y;
+            y_1 = yy;
 
             for (int i = 0; i < 6; i++)
             {
@@ -106,9 +105,8 @@ namespace LabelMakerWPF_Plain.Print
                 float size = drawModel.box.Size;
                 PointF posF; 
                 float posX = -1f;
-                float posY = 0; 
-                int lableNumberStartX = 243;
-                float lableNumberStartY = 84.8652344f;
+                float posY = 0;
+                float lableNumberStartX = x_2;
 
                 //Checking if string fit on a lable and changing until it does
                 while (posX < 0)
@@ -116,11 +114,11 @@ namespace LabelMakerWPF_Plain.Print
                     size--;
                     box = new Font(drawModel.box.FontFamily, size);
                     posF = graphics.MeasureString(lableNumber, box).ToPointF();
-                    posX = (140 - posF.X) / 2;
-                    posY = (101.1914066f - posF.Y) / 2;
+                    posX = ((x_3-x_2) - posF.X) / 2;
+                    posY = ((y-y_1) - posF.Y) / 2;
                 }
 
-                graphics.DrawString(lableNumber, box, Brushes.Black, lableNumberStartX + posX, lableNumberStartY + posY);
+                graphics.DrawString(lableNumber, box, Brushes.Black, lableNumberStartX + posX, y_1 + posY);
             }
         }       
 
