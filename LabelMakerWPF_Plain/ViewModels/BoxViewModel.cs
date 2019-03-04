@@ -14,7 +14,8 @@ namespace LabelMakerWPF_Plain.ViewModels
         #region Constructor
 
         public BoxViewModel()
-        {           
+        {
+            if (SavedModel.boxPrintModel != null) Load();
             PrintCommand = new RelayCommand(Print);
             ClearCommand = new RelayCommand(Clear);
             NextCommand = new RelayCommand(Next);
@@ -182,6 +183,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         {
             BoxPrintModel bpm = FillModel();
             SmallBoxLablePrint sblp = new SmallBoxLablePrint(bpm);
+            SavedModel.boxPrintModel = bpm;
         }
 
         private bool CheckCanPrint(bool value)
@@ -216,6 +218,27 @@ namespace LabelMakerWPF_Plain.ViewModels
             Qnt_4 = 0;
             Qnt_5 = 0;
             Copies = 1;
+            SavedModel.boxPrintModel = null;
+        }
+
+        private void Load()
+        {
+            Company = SavedModel.boxPrintModel.Company;
+            Order = SavedModel.boxPrintModel.Order;
+            Box_0 = SavedModel.boxPrintModel.Box0;
+            Box_1 = SavedModel.boxPrintModel.Box1;
+            Item_0 = SavedModel.boxPrintModel.Items[0];
+            Item_1 = SavedModel.boxPrintModel.Items[1];
+            Item_2 = SavedModel.boxPrintModel.Items[2];
+            Item_3 = SavedModel.boxPrintModel.Items[3];
+            Item_4 = SavedModel.boxPrintModel.Items[4];
+            Item_5 = SavedModel.boxPrintModel.Items[5];
+            Qnt_0 = SavedModel.boxPrintModel.Quantity[0];
+            Qnt_1 = SavedModel.boxPrintModel.Quantity[1];
+            Qnt_2 = SavedModel.boxPrintModel.Quantity[2];
+            Qnt_3 = SavedModel.boxPrintModel.Quantity[3];
+            Qnt_4 = SavedModel.boxPrintModel.Quantity[4];
+            Qnt_5 = SavedModel.boxPrintModel.Quantity[5];
         }
 
         private void Next(object obj)
@@ -273,7 +296,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             if (!_error)
             {
                 AddToPrint();
-                _printed = true;              
+                _printed = true;  
             }
             else
             {

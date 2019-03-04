@@ -13,6 +13,7 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         public CertificationNominateViewModel()
         {
+            if (SavedModel.certificationNominatePrintModel != null) Load();
             PrintCommand = new RelayCommand(Print);
             ClearCommand = new RelayCommand(Clear);
         }
@@ -88,13 +89,14 @@ namespace LabelMakerWPF_Plain.ViewModels
             CertificationNominatePrintModel model = new CertificationNominatePrintModel
             {
                 Copies = this._copies,
-                Date = this._date.ToShortDateString(),
+                Date = this._date,
                 Name = this._name,
                 SelfWeight = this._selfWeight,
                 LvlWeight = this._lvlWeight,
                 MaxWeight = this._maxWeight
             };
             CertificationNominateLablePrint print = new CertificationNominateLablePrint(model);
+            SavedModel.certificationNominatePrintModel = model;
         }
         private short CheckIsNoZero(short value)
         {
@@ -127,6 +129,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             Name = default(string);
             SelfWeight = 0;
             Date = DateTime.Now;
+            SavedModel.certificationNominatePrintModel = null;
         }
         private void FillList()
         {
@@ -136,6 +139,14 @@ namespace LabelMakerWPF_Plain.ViewModels
             _validation.Add(_maxWeight.ToString());
             _validation.Add(_name.ToString());
             _validation.Add(_selfWeight.ToString());
+        }
+        private void Load()
+        {
+            Name = SavedModel.certificationNominatePrintModel.Name;
+            Date = SavedModel.certificationNominatePrintModel.Date;
+            MaxWeight = SavedModel.certificationNominatePrintModel.MaxWeight;
+            LvlWeight = SavedModel.certificationNominatePrintModel.LvlWeight;
+            SelfWeight = SavedModel.certificationNominatePrintModel.SelfWeight;
         }
         private void Print(object obj)
         {

@@ -49,9 +49,7 @@ namespace LabelMakerWPF_Plain.ViewModels
         private bool _certificationNominateBtnCheck;
         private bool _certificationLvlBtnCheck;
         private bool _customBtnCheck;
-        private string _title;
-
-        
+        private string _title;        
 
         #endregion
 
@@ -119,7 +117,6 @@ namespace LabelMakerWPF_Plain.ViewModels
         #endregion
 
         #region Methods
-
 
         private bool Box(bool value)
         {

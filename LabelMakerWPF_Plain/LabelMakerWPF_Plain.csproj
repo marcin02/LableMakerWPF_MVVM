@@ -134,6 +134,7 @@
     <Compile Include="Converters\ConvertSettings.cs" />
     <Compile Include="Models\PaperSizeModel.cs" />
     <Compile Include="Models\PrinterSettingsModel.cs" />
+    <Compile Include="Models\SavedModel.cs" />
     <Compile Include="Models\SelectedViewModel.cs" />
     <Compile Include="PrinterSettings\PSettings.cs" />
     <Compile Include="PrinterSettings\SetPaperSize.cs" />

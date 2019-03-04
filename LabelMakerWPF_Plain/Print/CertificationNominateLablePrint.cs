@@ -84,7 +84,7 @@ namespace LabelMakerWPF_Plain.Print
             graphics.DrawLine(drawModel.p, x + x_2, y, x + x_2, y + bodyHeight);
 
             graphics.DrawString(" Data powstania", drawModel.body, Brushes.Black, x, y);
-            DrawAndCenterString(graphics, model.Date, drawModel.body);
+            DrawAndCenterString(graphics, model.Date.ToShortDateString(), drawModel.body);
             y += bodyHeight;
 
             graphics.DrawLine(drawModel.p, x, y, x + x_2, y);

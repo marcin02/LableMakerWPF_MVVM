@@ -1,9 +1,11 @@
-﻿namespace LabelMakerWPF_Plain.Models
+﻿using System;
+
+namespace LabelMakerWPF_Plain.Models
 {
     public class CertificationNominatePrintModel
     {
         public string Name { get; set; }
-        public string Date { get; set; }
+        public DateTime Date { get; set; }
         public int MaxWeight { get; set; }
         public int LvlWeight { get; set; }
         public int SelfWeight { get; set; }

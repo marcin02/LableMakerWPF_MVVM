@@ -15,6 +15,7 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         public BigBoxViewModel()
         {
+            if (SavedModel.bigBoxPrintModel != null) Load();
             PrintCommand = new RelayCommand(Print);
             ClearCommand = new RelayCommand(Clear);
             NextCommand = new RelayCommand(Next);
@@ -295,6 +296,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             };
 
             BigBoxLablePrint print = new BigBoxLablePrint(model);
+            SavedModel.bigBoxPrintModel = model;
         }
         private int CheckBoxValue(int value)
         {
@@ -382,6 +384,7 @@ namespace LabelMakerWPF_Plain.ViewModels
             Qnt_7 = 0;
             Qnt_8 = 0;
             Copies = 1;
+            SavedModel.bigBoxPrintModel = null;
         }
         private void FillDictionary()
         {
@@ -419,6 +422,38 @@ namespace LabelMakerWPF_Plain.ViewModels
             _quantity.Add(_qnt_7);
             _quantity.Add(_qnt_8);
         }
+
+        private void Load()
+        {
+            Company = SavedModel.bigBoxPrintModel.Company;
+            Order = SavedModel.bigBoxPrintModel.Order;
+            ContactPerson = SavedModel.bigBoxPrintModel.ContactPerson;
+            PhoneNumber = SavedModel.bigBoxPrintModel.PhoneNumber;
+            Street = SavedModel.bigBoxPrintModel.Street;
+            ZipCode = SavedModel.bigBoxPrintModel.ZipCode;
+            City = SavedModel.bigBoxPrintModel.City;
+            Box_0 = SavedModel.bigBoxPrintModel.Box0;
+            Box_1 = SavedModel.bigBoxPrintModel.Box1;
+            Item_0 = SavedModel.bigBoxPrintModel.Items[0];
+            Item_1 = SavedModel.bigBoxPrintModel.Items[1];
+            Item_2 = SavedModel.bigBoxPrintModel.Items[2];
+            Item_3 = SavedModel.bigBoxPrintModel.Items[3];
+            Item_4 = SavedModel.bigBoxPrintModel.Items[4];
+            Item_5 = SavedModel.bigBoxPrintModel.Items[5];
+            Item_6 = SavedModel.bigBoxPrintModel.Items[6];
+            Item_7 = SavedModel.bigBoxPrintModel.Items[7];
+            Item_8 = SavedModel.bigBoxPrintModel.Items[8];
+            Qnt_0 = SavedModel.bigBoxPrintModel.Quantity[0];
+            Qnt_1 = SavedModel.bigBoxPrintModel.Quantity[1];
+            Qnt_2 = SavedModel.bigBoxPrintModel.Quantity[2];
+            Qnt_3 = SavedModel.bigBoxPrintModel.Quantity[3];
+            Qnt_4 = SavedModel.bigBoxPrintModel.Quantity[4];
+            Qnt_5 = SavedModel.bigBoxPrintModel.Quantity[5];
+            Qnt_6 = SavedModel.bigBoxPrintModel.Quantity[6];
+            Qnt_7 = SavedModel.bigBoxPrintModel.Quantity[7];
+            Qnt_8 = SavedModel.bigBoxPrintModel.Quantity[8];
+        }
+
         private void Next(object obj)
         {
             MessagesModel message = new MessagesModel();
