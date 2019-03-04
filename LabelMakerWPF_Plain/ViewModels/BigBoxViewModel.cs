@@ -24,6 +24,7 @@ namespace LabelMakerWPF_Plain.ViewModels
 
         #region Private propeties
 
+        private bool _canFocus = false;
         private string _city;
         private string _contactPerson;
         private string _phoneNumber;
@@ -54,6 +55,12 @@ namespace LabelMakerWPF_Plain.ViewModels
         #endregion
 
         #region Public propeties
+
+        public bool CanFocus
+        {
+            get { return _canFocus; }
+            set { _canFocus = value; OnPropertyChanged(nameof(CanFocus)); }
+        }
 
         public string City
         {
@@ -385,6 +392,8 @@ namespace LabelMakerWPF_Plain.ViewModels
             Qnt_5 = 0;
             Copies = 1;
             _printed = false;
+            CanFocus = true;
+            CanFocus = false;
         }
         private string NumbersOnly(string value)
         {

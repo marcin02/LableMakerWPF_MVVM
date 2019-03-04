@@ -45,9 +45,10 @@ namespace LabelMakerWPF_Plain.ViewModels
         private bool _error = false;
         private bool _checkBoxIsChecked = true;
         private bool _printed = false;
+        private bool _canFocus = false;
 
         #endregion
-        
+
         #region Public properties
 
         public string Company
@@ -151,6 +152,11 @@ namespace LabelMakerWPF_Plain.ViewModels
             set { _checkBoxIsChecked = value; }
             
         }
+        public bool CanFocus
+        {
+            get { return _canFocus; }
+            set { _canFocus = value; OnPropertyChanged(nameof(CanFocus)); }
+        }
 
         #endregion
 
@@ -240,6 +246,8 @@ namespace LabelMakerWPF_Plain.ViewModels
             Qnt_5 = 0;
             Copies = 1;
             _printed = false;
+            CanFocus = true;
+            CanFocus = false;
         }
 
         private void RefreshProperty()

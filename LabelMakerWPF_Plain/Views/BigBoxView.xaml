@@ -16,6 +16,9 @@
                 <Trigger Property="IsFocused" Value="True">
                     <Setter Property="BorderBrush" Value="#FFABADB3"/>
                 </Trigger>
+                <DataTrigger Binding="{Binding CanFocus}" Value="True">
+                    <Setter Property="FocusManager.FocusedElement" Value="{Binding ElementName=Item_0}"/>
+                </DataTrigger>
             </Style.Triggers>
         </Style>
         <Style TargetType="TextBlock">
