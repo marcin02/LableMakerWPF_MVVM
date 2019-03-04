@@ -51,6 +51,31 @@ namespace LabelMakerWPF_Plain.ViewModels
         private short _copies = 1;
         private bool _checkBoxIsChecked = true;
         private bool _printed = false;
+        private string _item_6;
+        private string _item_7;
+        private string _item_8;
+        private int _qnt_6;
+
+        public int Qnt_6
+        {
+            get { return _qnt_6; }
+            set { _qnt_6 = value; OnPropertyChanged(nameof(Qnt_6)); }
+        }
+        private int _qnt_7;
+
+        public int Qnt_7
+        {
+            get { return _qnt_7; }
+            set { _qnt_7 = value; OnPropertyChanged(nameof(Qnt_7)); }
+        }
+        private int _qnt_8;
+
+        public int Qnt_8
+        {
+            get { return _qnt_8; }
+            set { _qnt_8 = value; OnPropertyChanged(nameof(Qnt_8)); }
+        }
+
 
         #endregion
 
@@ -162,6 +187,24 @@ namespace LabelMakerWPF_Plain.ViewModels
         {
             get { return _item_5; }
             set { _item_5 = value; OnPropertyChanged(nameof(Item_5)); }
+        }
+
+        public string Item_6
+        {
+            get { return _item_6; }
+            set { _item_6 = value; OnPropertyChanged(nameof(Item_6)); }
+        }
+
+        public string Item_7
+        {
+            get { return _item_7; }
+            set { _item_7 = value; OnPropertyChanged(nameof(Item_7)); }
+        }
+
+        public string Item_8
+        {
+            get { return _item_8; }
+            set { _item_8 = value; OnPropertyChanged(nameof(Item_8)); }
         }
 
         public int Qnt_0
@@ -327,12 +370,18 @@ namespace LabelMakerWPF_Plain.ViewModels
             Item_3 = default(string);
             Item_4 = default(string);
             Item_5 = default(string);
+            Item_6 = default(string);
+            Item_7 = default(string);
+            Item_8 = default(string);
             Qnt_0 = 0;
-            Qnt_0 = 0;
-            Qnt_0 = 0;
-            Qnt_0 = 0;
-            Qnt_0 = 0;
-            Qnt_0 = 0;
+            Qnt_1 = 0;
+            Qnt_2 = 0;
+            Qnt_3 = 0;
+            Qnt_4 = 0;
+            Qnt_5 = 0;
+            Qnt_6 = 0;
+            Qnt_7 = 0;
+            Qnt_8 = 0;
             Copies = 1;
         }
         private void FillDictionary()
@@ -358,12 +407,18 @@ namespace LabelMakerWPF_Plain.ViewModels
             _items.Add(_item_3);
             _items.Add(_item_4);
             _items.Add(_item_5);
+            _items.Add(_item_6);
+            _items.Add(_item_7);
+            _items.Add(_item_8);
             _quantity.Add(_qnt_0);
             _quantity.Add(_qnt_1);
             _quantity.Add(_qnt_2);
             _quantity.Add(_qnt_3);
             _quantity.Add(_qnt_4);
             _quantity.Add(_qnt_5);
+            _quantity.Add(_qnt_6);
+            _quantity.Add(_qnt_7);
+            _quantity.Add(_qnt_8);
         }
         private void Next(object obj)
         {
@@ -384,12 +439,18 @@ namespace LabelMakerWPF_Plain.ViewModels
             Item_3 = default(string);
             Item_4 = default(string);
             Item_5 = default(string);
+            Item_6 = default(string);
+            Item_7 = default(string);
+            Item_8 = default(string);
             Qnt_0 = 0;
             Qnt_1 = 0;
             Qnt_2 = 0;
             Qnt_3 = 0;
             Qnt_4 = 0;
             Qnt_5 = 0;
+            Qnt_6 = 0;
+            Qnt_7 = 0;
+            Qnt_8 = 0;
             Copies = 1;
             _printed = false;
             CanFocus = true;
@@ -435,12 +496,18 @@ namespace LabelMakerWPF_Plain.ViewModels
             OnPropertyChanged(nameof(Item_3));
             OnPropertyChanged(nameof(Item_4));
             OnPropertyChanged(nameof(Item_5));
+            OnPropertyChanged(nameof(Item_6));
+            OnPropertyChanged(nameof(Item_7));
+            OnPropertyChanged(nameof(Item_8));
             OnPropertyChanged(nameof(Qnt_0));
             OnPropertyChanged(nameof(Qnt_1));
             OnPropertyChanged(nameof(Qnt_2));
             OnPropertyChanged(nameof(Qnt_3));
             OnPropertyChanged(nameof(Qnt_4));
             OnPropertyChanged(nameof(Qnt_5));
+            OnPropertyChanged(nameof(Qnt_6));
+            OnPropertyChanged(nameof(Qnt_7));
+            OnPropertyChanged(nameof(Qnt_8));
         }
         private string ReturnFormattedZipCode(string value)
         {

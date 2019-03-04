@@ -48,7 +48,7 @@ namespace LabelMakerWPF_Plain.Print
             Graphics graphics = e.Graphics;
             float headerHeight = drawModel.header.GetHeight();
             float bodyHeight = drawModel.body.GetHeight();
-            float x = 6; // First vertical line x position
+            float x = (graphics.VisibleClipBounds.Width - 367) / 2; // First vertical line x position
             float x_1 = x + 170;  // Second vertical line x position
             float x_2 = x + 227; // Third vertical line x position
             float x_3 = x + 367; // Last vertical line x position

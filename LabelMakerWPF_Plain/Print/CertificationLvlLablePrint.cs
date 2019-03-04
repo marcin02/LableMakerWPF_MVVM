@@ -49,15 +49,16 @@ namespace LabelMakerWPF_Plain.Print
             float x = 0;
             float y = 0;
 
-            string LvlWeight = model.LvlWeight.ToString();
+            string header = "flexlean sp. z o.o.";
+            string line = $"Nośność poziomu: { model.LvlWeight } kg";
 
-            PointF posF = graphics.MeasureString(LvlWeight, drawModel.body).ToPointF();
+            PointF posF = graphics.MeasureString(header, drawModel.header).ToPointF();
             x = (graphics.VisibleClipBounds.Width - (posF.X - x)) / 2;
-            y = (graphics.VisibleClipBounds.Height - (posF.Y - y)) / 2;
+            y = (graphics.VisibleClipBounds.Height - ((headerHeight*2+bodyHeight) - y)) / 2;
 
-            graphics.DrawString("flexlean sp. z o.o.", drawModel.header, Brushes.Black, x, y);
+            graphics.DrawString(header, drawModel.header, Brushes.Black, x, y);
             y += headerHeight;
-            graphics.DrawString($"Nośność poziomu: { LvlWeight } kg", drawModel.body, Brushes.Black, x, y + 2);
+            graphics.DrawString(line, drawModel.body, Brushes.Black, x, y + 2);
         }
 
         #endregion

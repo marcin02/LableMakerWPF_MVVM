@@ -53,7 +53,7 @@ namespace LabelMakerWPF_Plain.Print
             float header2Height = header.GetHeight();
             float bodyHeight = body.GetHeight();
             float BigLableBody = drawModel.bigLableBody.GetHeight();
-            float x = 6; // First vertical line x position
+            float x = (graphics.VisibleClipBounds.Width - 367)/2; // First vertical line x position
             float x_1 = x + 170;  // Second vertical line x position
             float x_2 = x + 227; // Third vertical line x position
             float x_3 = x + 367; // Last vertical line x position
@@ -66,74 +66,67 @@ namespace LabelMakerWPF_Plain.Print
             y += reciver.GetHeight();
 
             graphics.DrawLine(drawModel.p, x, y, x_3, y);
-          //  graphics.DrawLine(drawModel.p, x_1, y, x_1, y + header2Height);
+            graphics.DrawLine(drawModel.p, x, y, x, y+5);
+            graphics.DrawLine(drawModel.p, x_3, y, x_3, y+5);
+            y += 5;
+
             graphics.DrawLine(drawModel.p, x, y, x, y + header2Height);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + header2Height);
             graphics.DrawString("Nadawca: ", header, Brushes.Black, x+2, y);
             graphics.DrawString("Odbiorca: ", header, Brushes.Black, x_4, y);
             y += header2Height;
 
-         //   graphics.DrawLine(drawModel.p, x_1, y, x_1, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x, y, x, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + BigLableBody);
             graphics.DrawString("flexlean sp. z o.o.", reciver, Brushes.Black, x+Margin, y);
             graphics.DrawString(model.Company, drawModel.bigLableBody, Brushes.Black, x_4+Margin, y);
             y += BigLableBody;
 
-         //   graphics.DrawLine(drawModel.p, x_1, y, x_1, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x, y, x, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + BigLableBody);
             graphics.DrawString($"Ul. Brodzka 10c", reciver, Brushes.Black, x+Margin, y);
             graphics.DrawString($"Ul. {model.Street}", drawModel.bigLableBody, Brushes.Black, x_4+Margin, y);
             y += BigLableBody;
 
-         //   graphics.DrawLine(drawModel.p, x_1, y, x_1, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x, y, x, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + BigLableBody);
             graphics.DrawString($"54-103 Wrocław", reciver, Brushes.Black, x+Margin, y);
             graphics.DrawString($"{model.ZipCode} {model.City}", drawModel.bigLableBody, Brushes.Black, x_4+Margin, y);
             y += BigLableBody;
 
-        //    graphics.DrawLine(drawModel.p, x_1, y, x_1, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x, y, x, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + BigLableBody);
             y += BigLableBody;
 
-        //    graphics.DrawLine(drawModel.p, x_1, y, x_1, y + bodyHeight);
             graphics.DrawLine(drawModel.p, x, y, x, y + bodyHeight);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + bodyHeight);
             graphics.DrawString($"Osoba kontaktowa:", reciver2, Brushes.Black, x+2, y);
             graphics.DrawString($"Osoba kontaktowa:", body, Brushes.Black, x_4, y);
             y += bodyHeight;
 
-       //     graphics.DrawLine(drawModel.p, x_1, y, x_1, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x, y, x, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + BigLableBody);
             graphics.DrawString("Paweł Kardis", reciver, Brushes.Black, x+Margin, y);
             graphics.DrawString(model.ContactPerson, drawModel.bigLableBody, Brushes.Black, x_4+Margin, y);
             y += BigLableBody;
 
-       //     graphics.DrawLine(drawModel.p, x_1, y, x_1, y + bodyHeight);
             graphics.DrawLine(drawModel.p, x, y, x, y + bodyHeight);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + bodyHeight);
             graphics.DrawString($"Numer telefonu:", reciver2, Brushes.Black, x+2, y);
             graphics.DrawString($"Numer telefonu:", body, Brushes.Black, x_4, y);
             y += bodyHeight;
 
-       //     graphics.DrawLine(drawModel.p, x_1, y, x_1, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x, y, x, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + BigLableBody);
             graphics.DrawString("535 250 700", reciver, Brushes.Black, x+Margin, y);
             graphics.DrawString(model.PhoneNumber, drawModel.bigLableBody, Brushes.Black, x_4+Margin, y);
             y += BigLableBody;
 
-       //     graphics.DrawLine(drawModel.p, x_1, y, x_1, y + bodyHeight);
             graphics.DrawLine(drawModel.p, x, y, x, y + bodyHeight);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + bodyHeight);
             graphics.DrawString("Numer zamówienia:", body, Brushes.Black, x_4, y);
             y += bodyHeight;
 
-       //     graphics.DrawLine(drawModel.p, x_1, y, x_1, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x, y, x, y + BigLableBody);
             graphics.DrawLine(drawModel.p, x_3, y, x_3, y + BigLableBody);
             graphics.DrawString(model.Order, drawModel.bigLableBody, Brushes.Black, x_4 + Margin, y);
@@ -159,7 +152,7 @@ namespace LabelMakerWPF_Plain.Print
             float yy = y;
             float lableNumberStartY = yy;
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < model.Items.Count ; i++)
             {
                 graphics.DrawLine(drawModel.p, x, y, x_2, y);
                 graphics.DrawLine(drawModel.p, x, y, x, y + bodyHeight);
@@ -197,7 +190,7 @@ namespace LabelMakerWPF_Plain.Print
                     box = new Font(drawModel.box.FontFamily, size);
                     posF = graphics.MeasureString(lableNumber, box).ToPointF();
                     posX = (140 - posF.X) / 2;
-                    posY = (101.1914066f - posF.Y) / 2;
+                    posY = ((y-lableNumberStartY) - posF.Y) / 2;
                 }
 
                 graphics.DrawString(lableNumber, box, Brushes.Black, lableNumberStartX + posX, lableNumberStartY + posY);
