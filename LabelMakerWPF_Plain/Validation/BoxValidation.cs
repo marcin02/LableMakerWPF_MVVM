@@ -39,9 +39,19 @@ namespace LabelMakerWPF_Plain.Validation
                 } 
             }
 
-            if(blankBoxes==13 || blankBoxes==19)
+            if(vd.Count == 13)
             {
-                return resultNOK;
+                if(blankBoxes == 13)
+                {
+                    return resultNOK;
+                }
+            }
+            else if(vd.Count == 19)
+            {
+                if(blankBoxes == 19)
+                {
+                    return resultNOK;
+                }
             }
 
             return resultOK;
